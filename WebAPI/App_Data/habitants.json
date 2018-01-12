@@ -1,0 +1,38 @@
+﻿[
+  {
+    "HabitantId": 1,
+    "Name": "Oleg",
+    "Surname": "Maximov",
+    "HomeId": 1,
+    "CompanyId": 1,
+    "Apartment": 1,
+    "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "HabitantId": 2,
+    "Name": "Nikola",
+    "Surname": "Zyev",
+    "CompanyId": 1,
+    "HomeId": 1,
+    "Apartment": 4,
+    "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "HabitantId": 4,
+    "Name": "Viktor",
+    "Surname": "Laskin",
+    "CompanyId": 2,
+    "HomeId": 5,
+    "Apartment": 11,
+    "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "HabitantId": 5,
+    "Name": "Nikola",
+    "CompanyId": 2,
+    "Surname": "Zyev",
+    "HomeId": 4,
+    "Apartment": 42,
+    "CreateDate": "2018-01-01T00:00:00-00:00"
+  }
+]
