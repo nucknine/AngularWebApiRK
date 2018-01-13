@@ -17,7 +17,7 @@ namespace APM.WebAPI.Models
         /// Creates a new managementCompany with default values
         /// </summary>
         /// <returns></returns>
-        internal ManagementCompany ManagementCompanyCreate()
+        internal ManagementCompany Create()
         {
             ManagementCompany managementCompany = new ManagementCompany
             {
@@ -30,7 +30,7 @@ namespace APM.WebAPI.Models
         /// Retrieves the list of managementCompanies.
         /// </summary>
         /// <returns></returns>
-        internal List<ManagementCompany> ManagementCompanyRetrieve()
+        internal List<ManagementCompany> Retrieve()
         {
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/companies.json");
 
@@ -45,13 +45,13 @@ namespace APM.WebAPI.Models
         /// Retrieves the list of managementCompany's Homes.
         /// </summary>
         /// <returns></returns>
-        internal List<Home> ManagementCompanyRetrieve(int companyId)
+        internal List<Home> Retrieve(int companyId)
         {
-            var homeFilePath = HostingEnvironment.MapPath(@"~/App_Data/homes.json");
+            var filePath = HostingEnvironment.MapPath(@"~/App_Data/homes.json");
                                 
-            var homeJson = System.IO.File.ReadAllText(homeFilePath);
+            var json = System.IO.File.ReadAllText(filePath);
 
-            var homes = JsonConvert.DeserializeObject<List<Home>>(homeJson);
+            var homes = JsonConvert.DeserializeObject<List<Home>>(json);
             
             var companyHomes = homes.Where(p => p.ManagementCompanyId == companyId).ToList();
             
@@ -63,17 +63,17 @@ namespace APM.WebAPI.Models
         /// </summary>
         /// <param name="managementCompany"></param>
         /// <returns></returns>
-        internal ManagementCompany ManagementCompanySave(ManagementCompany managementCompany)
+        internal ManagementCompany Save(ManagementCompany managementCompany)
         {
             // Read in the existing managementCompanies
-            var managementCompanies = this.ManagementCompanyRetrieve();
+            var managementCompanies = this.Retrieve();
 
             // Assign a new Id
             var maxId = managementCompanies.Max(p => p.ManagementCompanyId);
             managementCompany.ManagementCompanyId = maxId + 1;
             managementCompanies.Add(managementCompany);
 
-            ManagementCompanyWriteData(managementCompanies);
+            WriteData(managementCompanies);
             return managementCompany;
         }
 
@@ -86,7 +86,7 @@ namespace APM.WebAPI.Models
         internal ManagementCompany Save(int id, ManagementCompany managementCompany)
         {
             // Read in the existing managementCompanies
-            var managementCompanies = this.ManagementCompanyRetrieve();
+            var managementCompanies = this.Retrieve();
 
             // Locate and replace the item
             var itemIndex = managementCompanies.FindIndex(p => p.ManagementCompanyId == managementCompany.ManagementCompanyId);
@@ -99,15 +99,15 @@ namespace APM.WebAPI.Models
                 return null;
             }
 
-            ManagementCompanyWriteData(managementCompanies);
+            WriteData(managementCompanies);
             return managementCompany;
         }
 
 
-        private bool ManagementCompanyWriteData(List<ManagementCompany> managementCompanies)
+        private bool WriteData(List<ManagementCompany> managementCompanies)
         {
             // Write out the Json
-            var filePath = HostingEnvironment.MapPath(@"~/App_Data/managementCompanies.json");
+            var filePath = HostingEnvironment.MapPath(@"~/App_Data/companies.json");
 
             var json = JsonConvert.SerializeObject(managementCompanies, Formatting.Indented);
             System.IO.File.WriteAllText(filePath, json);

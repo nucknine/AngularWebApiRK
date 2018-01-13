@@ -1,12 +1,12 @@
 ﻿[
   {
-    "CompanyName": "LeafYK",
-    "CompanyId": 1,
+    "Name": "LeafYK",
+    "ManagementCompanyId": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
-    "CompanyName": "RosYK",
-    "CompanyId": 2,
+    "Name": "RosYK",
+    "ManagementCompanyId": 2,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   }
 ]

@@ -17,7 +17,7 @@ namespace APM.WebAPI.Models
         /// Creates a new habitant with default values
         /// </summary>
         /// <returns></returns>
-        internal Habitant HabitantCreate()
+        internal Habitant Create()
         {
             Habitant habitant = new Habitant
             {
@@ -30,7 +30,7 @@ namespace APM.WebAPI.Models
         /// Retrieves the list of habitants.
         /// </summary>
         /// <returns></returns>
-        internal List<Habitant> HabitantRetrieve()
+        internal List<Habitant> Retrieve()
         {
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/habitants.json");
 
@@ -46,17 +46,17 @@ namespace APM.WebAPI.Models
         /// </summary>
         /// <param name="habitant"></param>
         /// <returns></returns>
-        internal Habitant HabitantSave(Habitant habitant)
+        internal Habitant Save(Habitant habitant)
         {
             // Read in the existing habitants
-            var habitants = this.HabitantRetrieve();
+            var habitants = this.Retrieve();
 
             // Assign a new Id
             var maxId = habitants.Max(p => p.HabitantId);
             habitant.HabitantId = maxId + 1;
             habitants.Add(habitant);
 
-            HabitantWriteData(habitants);
+            WriteData(habitants);
             return habitant;
         }
 
@@ -69,7 +69,7 @@ namespace APM.WebAPI.Models
         internal Habitant Save(int id, Habitant habitant)
         {
             // Read in the existing habitants
-            var habitants = this.HabitantRetrieve();
+            var habitants = this.Retrieve();
 
             // Locate and replace the item
             var itemIndex = habitants.FindIndex(p => p.HabitantId == habitant.HabitantId);
@@ -82,12 +82,12 @@ namespace APM.WebAPI.Models
                 return null;
             }
 
-            HabitantWriteData(habitants);
+            WriteData(habitants);
             return habitant;
         }
 
 
-        private bool HabitantWriteData(List<Habitant> habitants)
+        private bool WriteData(List<Habitant> habitants)
         {
             // Write out the Json
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/habitants.json");

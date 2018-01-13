@@ -3,42 +3,42 @@
     "HomeId": 4,
     "Street": "Pink Street",
     "Number": 7,
-    "CompanyId": 1,
+    "ManagementCompanyId": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 5,
     "Street": "Green Street",
     "Number": 2,
-    "CompanyId": 1,
+    "ManagementCompanyId": 2,
     "CreateDate" : "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 6,
     "Street": "Pink Street",
     "Number": 6,
-    "CompanyId": 1,
+    "ManagementCompanyId": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 1,
     "Street": "Leaf Rake",
     "Number": 7,
-    "CompanyId": 1,
+    "ManagementCompanyId": 2,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 2,
     "Street": "Leaf Rake",
     "Number": 22,
-    "CompanyId": 1,
+    "ManagementCompanyId": 2,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 3,
     "Street": "Leaf Rake",
     "Number": 31,
-    "CompanyId": 1,
+    "ManagementCompanyId": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00"
   }
 ]

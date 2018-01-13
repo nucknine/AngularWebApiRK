@@ -17,7 +17,7 @@ namespace APM.WebAPI.Models
         /// Creates a new product with default values
         /// </summary>
         /// <returns></returns>
-        internal Home HomeCreate()
+        internal Home Create()
         {
             Home home = new Home
             {
@@ -30,7 +30,7 @@ namespace APM.WebAPI.Models
         /// Retrieves the list of products.
         /// </summary>
         /// <returns></returns>
-        internal List<Home> HomeRetrieve()
+        internal List<Home> Retrieve()
         {
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/homes.json");
 
@@ -46,17 +46,17 @@ namespace APM.WebAPI.Models
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        internal Home HomeSave(Home home)
+        internal Home Save(Home home)
         {
             // Read in the existing products
-            var homes = this.HomeRetrieve();
+            var homes = this.Retrieve();
 
             // Assign a new Id
             var maxId = homes.Max(p => p.HomeId);
             home.HomeId = maxId + 1;
             homes.Add(home);
 
-            HomeWriteData(homes);
+            WriteData(homes);
             return home;
         }
 
@@ -69,7 +69,7 @@ namespace APM.WebAPI.Models
         internal Home Save(int id, Home home)
         {
             // Read in the existing products
-            var homes = this.HomeRetrieve();
+            var homes = this.Retrieve();
 
             // Locate and replace the item
             var itemIndex = homes.FindIndex(p => p.HomeId == home.HomeId);
@@ -82,12 +82,12 @@ namespace APM.WebAPI.Models
                 return null;
             }
 
-            HomeWriteData(homes);
+            WriteData(homes);
             return home;
         }
 
 
-        private bool HomeWriteData(List<Home> homes)
+        private bool WriteData(List<Home> homes)
         {
             // Write out the Json
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/homes.json");
