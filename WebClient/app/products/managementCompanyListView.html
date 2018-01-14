@@ -1,0 +1,27 @@
+<div class="panel panel-primary"
+     ng-controller="managementCompanyListCtrl as vm">
+    <div class="panel-heading"
+         style="font-size:large">
+        Product List
+    </div>
+
+    <div class="panel-body">
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Date</td>                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="managementCompany in vm.managementCompanies">
+                    <td>{{ managementCompany.managementCompanyId}}</td>
+                    <td>{{ managementCompany.name }}</td>
+                    <td>{{ managementCompany.createDate | date }}</td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

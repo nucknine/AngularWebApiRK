@@ -33,6 +33,9 @@ namespace WebAPI.Providers
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",
+                new[] { "http://localhost:13955" });
+
             if (user == null)
             {
                 context.SetError("invalid_grant", "Имя пользователя или пароль указаны неправильно.");

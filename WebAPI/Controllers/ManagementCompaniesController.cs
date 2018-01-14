@@ -12,7 +12,7 @@ using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
-    [EnableCorsAttribute("http://localhost:13955", "*", "*")]
+    [EnableCorsAttribute("*", "*", "*")]
     public class ManagementCompaniesController : ApiController
     {
         // GET: api/ManagementCompanies

@@ -1,4 +1,3 @@
-C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
 C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\bin\ApplicationInsights.config
 C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\bin\WebAPI.dll.config
