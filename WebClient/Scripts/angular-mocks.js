@@ -1121,7 +1121,7 @@ angular.mock.dump = function(object) {
  *
  * ## Flushing HTTP requests
  *
- * The $httpBackend used in production always responds to requests asynchronously. If we preserved
+ * The $httpBackend used in managementCompanyion always responds to requests asynchronously. If we preserved
  * this behavior in unit testing, we'd have to create async unit tests, which are hard to write,
  * to follow and to maintain. But neither can the testing mock respond synchronously; that would
  * change the execution of the code under test. For this reason, the mock $httpBackend has a
@@ -2390,7 +2390,7 @@ angular.mock.$ComponentControllerProvider = ['$compileProvider',
  *  * [NPM](https://www.npmjs.com/) e.g. `npm install angular-mocks@X.Y.Z`
  *  * [Yarn](https://yarnpkg.com) e.g. `yarn add angular-mocks@X.Y.Z`
  *  * [Bower](http://bower.io) e.g. `bower install angular-mocks#X.Y.Z`
- *  * [code.angularjs.org](https://code.angularjs.org/) (discouraged for production use)  e.g.
+ *  * [code.angularjs.org](https://code.angularjs.org/) (discouraged for managementCompanyion use)  e.g.
  *    `"//code.angularjs.org/X.Y.Z/angular-mocks.js"`
  *
  * where X.Y.Z is the AngularJS version you are running.

@@ -1,12 +1,17 @@
-﻿[
+[
   {
-    "Name": "LeafYK",
     "ManagementCompanyId": 1,
-    "CreateDate": "2018-01-01T00:00:00-00:00"
+    "Name": "LeafYK",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
-    "Name": "RosYK",
     "ManagementCompanyId": 2,
-    "CreateDate": "2018-01-01T00:00:00-00:00"
+    "Name": "RosYK",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
+  },
+  {
+    "ManagementCompanyId": 3,
+    "Name": "RussDom",
+    "CreateDate": "2018-01-15T10:14:06.6047943+03:00"
   }
 ]

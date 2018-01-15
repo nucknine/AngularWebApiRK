@@ -10,7 +10,7 @@
         var vm = this;
 
         managementCompaniesResource.query({
-            //$filter: "contains(MangementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
+            //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
             $orderby: "Name desc"
         },
             function (data) {
@@ -22,12 +22,12 @@
         //vm.sortProperty = "Price";
         //vm.sortDirection = "desc";
 
-        //mangementCompanyResource.query({
-        //    $filter: "contains(MangementCompanyCode, '" + vm.searchCriteria + "')" +
-        //        " or contains(MangementCompanyName, '" + vm.searchCriteria + "')",
+        //managementCompanyResource.query({
+        //    $filter: "contains(ManagementCompanyCode, '" + vm.searchCriteria + "')" +
+        //        " or contains(ManagementCompanyName, '" + vm.searchCriteria + "')",
         //    $orderby: vm.sortProperty + " " + vm.sortDirection
         //}, function (data) {
-        //    vm.mangementCompanys = data;
+        //    vm.managementCompanys = data;
         //})
 
     }

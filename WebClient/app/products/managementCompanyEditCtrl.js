@@ -3,18 +3,18 @@
 
     angular
         .module("companyManagement")
-        .controller("MangementCompanyEditCtrl",
-                     MangementCompanyEditCtrl);
+        .controller("ManagementCompanyEditCtrl",
+                     ManagementCompanyEditCtrl);
 
-    function MangementCompanyEditCtrl(mangementCompanyResource) {
+    function ManagementCompanyEditCtrl(managementCompaniesResource) {
         var vm = this;
-        vm.mangementCompany = {};
+        vm.managementCompany = {};
         vm.message = '';
 
-        mangementCompanyResource.get({ id: 5 },
+        managementCompaniesResource.get({ id: 3 },
             function (data) {
-                vm.mangementCompany = data;
-                vm.originalMangementCompany = angular.copy(data);
+                vm.managementCompany = data;
+                vm.originalManagementCompany = angular.copy(data);
             },
             function (response) {
                 vm.message = response.statusText + "\r\n";
@@ -22,17 +22,17 @@
                     vm.message += response.data.exceptionMessage;
             });
 
-        if (vm.mangementCompany && vm.mangementCompany.mangementCompanyId) {
-            vm.title = "Edit: " + vm.mangementCompany.mangementCompanyName;
+        if (vm.managementCompany && vm.managementCompany.managementCompanyId) {
+            vm.title = "Edit: " + vm.managementCompany.managementCompanyName;
         }
         else {
-            vm.title = "New MangementCompany";
+            vm.title = "New ManagementCompany";
         }
 
         vm.submit = function () {
             vm.message = '';
-            if (vm.mangementCompany.mangementCompanyId) {
-                vm.mangementCompany.$update({ id: vm.mangementCompany.mangementCompanyId },
+            if (vm.managementCompany.managementCompanyId) {
+                vm.managementCompany.$update({ id: vm.managementCompany.managementCompanyId },
                     function (data) {
                         vm.message = "... Save Complete";
                     },
@@ -48,9 +48,9 @@
                     });
             }
             else {
-                vm.mangementCompany.$save(
+                vm.managementCompany.$save(
                     function (data) {
-                        vm.originalMangementCompany = angular.copy(data);
+                        vm.originalManagementCompany = angular.copy(data);
 
                         vm.message = "... Save Complete";
                     },
@@ -69,7 +69,7 @@
 
         vm.cancel = function (editForm) {
             editForm.$setPristine();
-            vm.mangementCompany = angular.copy(vm.originalMangementCompany);
+            vm.managementCompany = angular.copy(vm.originalManagementCompany);
             vm.message = "";
         };
 
