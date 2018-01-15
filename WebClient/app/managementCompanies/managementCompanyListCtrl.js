@@ -8,7 +8,7 @@
 
     function managementCompanyListCtrl(managementCompaniesResource) {
         var vm = this;
-        vm.managementCompanyHomes = {"homeId": 12};
+        vm.managementCompanyHomes = {};
         vm.managementCompanies = {};
 
         managementCompaniesResource.query({
@@ -16,15 +16,26 @@
             $orderby: "Name desc"
         },
             function (data) {
-                vm.managementCompanies = data;
+                vm.managementCompanies = data;                              
             });
 
+        //managementCompaniesResource.query({
+        //    //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
+        //    //$orderby: "Name desc"
+        //},
+        //    function (data) {
+        //        vm.managementCompanyHomes = data;
+        //        console.log(data);
+        //    });
+
+        
+
         managementCompaniesResource.get({ id: 1, flag: true },
-            function (data) {
-                vm.managementCompanyHomes = "dsdsds";  
+            function (data) {                               
+                vm.managementCompanyHomes = data;
             },
-            function (response) {
-                vm.message = response.statusText + "\r\n";
+            function (response) {                
+                vm.message = response + "\r\n";                
                 if (response.data.exceptionMessage)
                     vm.message += response.data.exceptionMessage;
             });
