@@ -2,7 +2,7 @@
      ng-controller="managementCompanyListCtrl as vm">
     <div class="panel-heading"
          style="font-size:large">
-        ManagementCompany List
+        Management Company List
     </div>
 
     <div class="panel-body">
@@ -20,8 +20,20 @@
                     <td>{{ managementCompany.managementCompanyId}}</td>
                     <td>{{ managementCompany.name }}</td>
                     <td>{{ managementCompany.createDate | date }}</td>                    
-                </tr>
+                </tr>                
             </tbody>
-        </table>
+        </table>        
+    </div>
+
+    <div>
+        {{vm.managementCompanyHomes}}
+        Homes
+        <div ng-repeat="home in vm.managementCompanyHomes">
+            <div>{{ home.homeId}}</div>
+            <div>{{ home.street }}</div>
+            <div>{{ home.createDate | date }}</div>
+            <div>{{ home.managementCompanyId }}</div>
+            <div>{{ home.number }}</div>
+        </div>
     </div>
 </div>
