@@ -21,7 +21,8 @@ using System.Web.Http.Cors;
 namespace WebAPI.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]    
+    [RoutePrefix("api/Account")]
+    [EnableCorsAttribute("*", "*", "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";

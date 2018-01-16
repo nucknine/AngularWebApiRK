@@ -4,7 +4,7 @@
     angular
         .module("common.services")
         .factory("currentUser",
-                  currentUser)
+        currentUser);
 
     function currentUser() {
         var profile = {
@@ -21,11 +21,11 @@
 
         var getProfile = function () {
             return profile;
-        }
+        };
 
         return {
             setProfile: setProfile,
             getProfile: getProfile
-        }
+        };
     }
 })();

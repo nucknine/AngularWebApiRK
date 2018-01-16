@@ -109,6 +109,7 @@ namespace APM.WebAPI.Models
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/companies.json");
 
             var json = JsonConvert.SerializeObject(managementCompanies, Formatting.Indented);
+
             System.IO.File.WriteAllText(filePath, json);
 
             return true;

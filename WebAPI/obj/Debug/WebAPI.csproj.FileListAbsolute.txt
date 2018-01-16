@@ -277,3 +277,4 @@ C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyRe
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.pdb
+C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
