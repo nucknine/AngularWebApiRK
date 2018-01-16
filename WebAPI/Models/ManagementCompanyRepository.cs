@@ -33,10 +33,9 @@ namespace APM.WebAPI.Models
         internal List<ManagementCompany> Retrieve()
         {
             var filePath = HostingEnvironment.MapPath(@"~/App_Data/companies.json");
-
             var json = System.IO.File.ReadAllText(filePath);
-
             var managementCompanies = JsonConvert.DeserializeObject<List<ManagementCompany>>(json);
+                                              
 
             return managementCompanies;
         }

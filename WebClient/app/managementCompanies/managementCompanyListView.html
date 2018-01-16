@@ -5,63 +5,20 @@
         Management Company List
     </div>
 
-    <div class="panel-body">
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Date</td>                   
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="managementCompany in vm.managementCompanies">
-                    <td>{{ managementCompany.managementCompanyId}}</td>
-                    <td>{{ managementCompany.name }}</td>
-                    <td>{{ managementCompany.createDate | date }}</td>                    
-                </tr>                
-            </tbody>
-        </table>        
-    </div>
-
-    <div>        
-        <div ng-repeat="home in vm.managementCompanyHomes">
-            <div>{{ home.homeId}}</div>
-            <div>{{ home.street }}</div>
-            <div>{{ home.createDate | date }}</div>
-            <div>{{ home.managementCompanyId }}</div>
-            <div>{{ home.number }}</div>
+    <div class="panel-group">        
+        <div class="panel panel-default"
+             ng-repeat="managementCompany in vm.managementCompanies">
+            <div class="panel-heading">Company name: {{ managementCompany.name }}</div>            
+            <div ng-repeat="homes in vm.managementCompanyHomes">
+                <div class="panel-body" ng-repeat="home in homes"
+                     ng-if="home.managementCompanyId == managementCompany.managementCompanyId">                    
+                        <div class="col-md-6">Street: {{ home.street }}</div>                        
+                        <div class="col-md-6">House number: {{ home.number }}</div>                    
+                </div>
+            </div>            
         </div>
     </div>
+
+
 </div>
 
-<!--new-->
-<div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">Heading 1</div>
-        <div class="panel-collapse collapse in">
-            <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nisl dictum, tempor sapien ut, sagittis neque.
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">Heading 2</div>
-        <div class="panel-collapse collapse">
-            <div class="panel-body">
-                Cras blandit mattis aliquam. Vestibulum magna ligula, tempor et eros in, ultricies sollicitudin dolor.
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">Heading 3</div>
-        <div class="panel-collapse collapse">
-            <div class="panel-body">
-                Vestibulum magna ligula, tempor et eros in, ultricies sollicitudin dolor.
-            </div>
-        </div>
-    </div>
-</div>

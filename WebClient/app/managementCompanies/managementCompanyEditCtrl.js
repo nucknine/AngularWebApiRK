@@ -3,31 +3,37 @@
 
     angular
         .module("companyManagement")
-        .controller("ManagementCompanyEditCtrl",
-                     ManagementCompanyEditCtrl);
+        .controller("managementCompanyEditCtrl",
+        managementCompanyEditCtrl);
 
-    function ManagementCompanyEditCtrl(managementCompaniesResource) {
+    function managementCompanyEditCtrl(managementCompaniesResource) {
         var vm = this;
         vm.managementCompany = {};
         vm.message = '';
+        vm.title = '';
+        vm.id = 0;
 
-        managementCompaniesResource.get({ id: 3 },
-            function (data) {
-                vm.managementCompany = data;
-                vm.originalManagementCompany = angular.copy(data);
-            },
-            function (response) {
-                vm.message = response.statusText + "\r\n";
-                if (response.data.exceptionMessage)
-                    vm.message += response.data.exceptionMessage;
-            });
+        vm.select = function () {
+            managementCompaniesResource.get({ id: vm.id },
+                function (data) {
+                    vm.managementCompany = data;
+                    vm.originalManagementCompany = angular.copy(data);
 
-        if (vm.managementCompany && vm.managementCompany.managementCompanyId) {
-            vm.title = "Edit: " + vm.managementCompany.managementCompanyName;
+                    if (vm.managementCompany.managementCompanyId && vm.managementCompany.name) {
+                        vm.title = "Edit: " + vm.managementCompany.name;
+                    }
+                    else {
+                        vm.title = "New Management Company";
+                    }
+                },
+                function (response) {
+                    vm.message = response.statusText + "\r\n";
+                    if (response.data.exceptionMessage)
+                        vm.message += response.data.exceptionMessage;
+                });
         }
-        else {
-            vm.title = "New ManagementCompany";
-        }
+
+
 
         vm.submit = function () {
             vm.message = '';

@@ -8,39 +8,36 @@
 
     function managementCompanyListCtrl(managementCompaniesResource) {
         var vm = this;
-        vm.managementCompanyHomes = {};
+        vm.managementCompanyHomes = [];
         vm.managementCompanies = {};
+        vm.id = [1,2,3];
 
         managementCompaniesResource.query({
             //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
-            $orderby: "Name desc"
+            //$orderby: "Name desc"
         },
             function (data) {
-                vm.managementCompanies = data;                              
+                vm.managementCompanies = data;
             });
-
-        //managementCompaniesResource.query({
-        //    //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
-        //    //$orderby: "Name desc"
-        //},
-        //    function (data) {
-        //        vm.managementCompanyHomes = data;
-        //        console.log(data);
-        //    });
-
         
-
-        managementCompaniesResource.get({ id: 1, flag: true },
-            function (data) {                               
-                vm.managementCompanyHomes = data;
+        for (var i = 1; i <= vm.id.length; i++) {
+        managementCompaniesResource.findHomes({ id: i, flag: true },
+            function (data) {
+                vm.managementCompanyHomes.push(data);
             },
-            function (response) {                
-                vm.message = response + "\r\n";                
+            function (response) {
+                vm.message = response + "\r\n";
                 if (response.data.exceptionMessage)
                     vm.message += response.data.exceptionMessage;
             });
+        }
 
-        
+
+
+
+
+
+
 
         // Alternative code using variables instead of hard-coded values
         //vm.searchCriteria = "GDN";

@@ -1,0 +1,20 @@
+﻿[
+  {
+    "HabitantId": 1,
+    "ManagementCompanyId": 1,
+    "Message": "Не работает свет",
+    "Response": ""
+  },
+  {
+    "HabitantId": 2,
+    "ManagementCompanyId": 1,
+    "Message": "Нет воды",
+    "Response": "Мастер будет в 14:00"
+  },
+  {
+    "HabitantId": 3,
+    "ManagementCompanyId": 1,
+    "Message": "Не работает свет",
+    "Response": ""
+  }
+]

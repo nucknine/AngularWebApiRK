@@ -1,12 +1,12 @@
 <form class="form-horizontal"
       name="managementCompanyForm"
       novalidate
-      ng-controller="ManagementCompanyEditCtrl as vm">
+      ng-controller="managementCompanyEditCtrl as vm">
     <fieldset>
-        <legend>Basic ManagementCompany Information</legend>
+        <legend>{{vm.title}}</legend>
         <div class="form-group"
-             ng-class="{'has-error':managementCompanyForm.inputName.$invalid &&
-                                    managementCompanyForm.inputName.$dirty}">
+             ng-class="{'has-error':managementCompanyForm.inputManagementCompanyName.$invalid &&
+                                    managementCompanyForm.inputManagementCompanyName.$dirty}">
             <label class="col-md-2 control-label"
                    for="inputManagementCompanyName">ManagementCompany Name</label>
 
@@ -22,35 +22,15 @@
                        ng-maxlength="12" />
             </div>
             <span class="help-block has-error">
-                <span ng-show="managementCompanyForm.inputName.$error.required">
-                    ManagementCompany name is required.
+                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.required">
+                    Management Company name is required.
                 </span>
-                <span ng-show="managementCompanyForm.inputName.$error.minlength">
-                    ManagementCompany name must be at least 4 characters in length.
+                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.minlength">
+                    Management Company name must be at least 4 characters in length.
                 </span>
-                <span ng-show="managementCompanyForm.inputName.$error.maxlength">
-                    ManagementCompany name cannot exceed 12 characters in length.
+                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.maxlength">
+                    Management Company name cannot exceed 12 characters in length.
                 </span>
-            </span>
-        </div>
-
-        <div class="form-group"
-             ng-class="{'has-error':managementCompanyForm.inputManagementCompanyId.$invalid &&
-                                    managementCompanyForm.inputManagementCompanyId.$dirty}">
-            <label class="col-md-2 control-label" for="inputManagementCompanyId">Management Company Id</label>
-
-            <div class="col-md-4">
-                <input class="form-control"
-                       id="inputManagementCompanyId"
-                       name="inputManagementCompanyId"
-                       type="text"
-                       placeholder="Company Id (required)"
-                       ng-model="vm.managementCompany.managementCompanyId"
-                       required>
-            </div>
-            <span class="help-block has-error"
-                  ng-show="managementCompanyForm.inputManagementCompanyId.$invalid ">
-                ManagementCompany Id is required
             </span>
         </div>
 
@@ -60,12 +40,39 @@
 
             <div class="col-md-4">
                 <div class="form-control">
-                    {{vm.managementCompany.createDate | date }}
+                    {{vm.managementCompany.createDate | date}}
                 </div>
             </div>
         </div>
 
-        
+        <div class="form-group"
+             ng-controller="managementCompanyListCtrl as dm">
+
+            <label class="col-md-2 control-label"
+                   for="SelectAction">
+                Select Action
+            </label>
+            
+            <div class="col-md-2">
+                <div class="form-control">
+                    <select ng-model="vm.id" id="SelectAction">
+                        <option value="0" selected>Create new</option>
+                        <option ng-repeat="company in dm.managementCompanies"
+                                value="{{company.managementCompanyId}}">
+                            Edit {{company.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary col-md-2"
+                    style="width:80px;margin-right:10px"
+                    ng-click="vm.select()">
+                Select
+            </button>
+        </div>
+
+
 
         <div class="form-group">
             <div class="col-md-4 col-md-offset-2">
@@ -90,7 +97,7 @@
         <div class="form-group"
              ng-show="vm.message">
             <div class="col-md-6">
-                <pre style ="font: inherit">{{vm.message }}</pre>
+                <pre style="font: inherit">{{vm.message}}</pre>
             </div>
         </div>
 

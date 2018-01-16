@@ -8,12 +8,12 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
 </head>
 
-<body ng-app="companyManagement">
-    <!--ng-controller="MainCtrl as vm">-->
-    <!--<nav class="navbar navbar-default">
+<body ng-app="companyManagement"
+      ng-controller="MainCtrl as vm">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <div class="navbar-brand">Acme ManagementCompany Management</div>
+                <div class="navbar-brand">Company Management</div>
                 <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
                     <div class="form-group">
                         <input type="text"
@@ -41,14 +41,15 @@
                 </form>
             </div>
         </div>
-    </nav>-->
+    </nav>
 
     <div class="container">
         <div ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
     </div>
 
     <div class="container">
-        <div ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
+        <div
+             ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
     </div>
 
     <!-- Library Scripts -->
@@ -70,11 +71,8 @@
     <!-- ManagementCompany Controllers -->
     <script src="app/managementCompanies/managementCompanyListCtrl.js"></script>
     <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>
-    <!--<script src="app/mainCtrl.js"></script>-->
-
-    <script src="common/accordion.js"></script>
-
-
+    <script src="app/mainCtrl.js"></script>
+    
    
 </body>
 

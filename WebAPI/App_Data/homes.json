@@ -11,7 +11,7 @@
     "Street": "Green Street",
     "Number": 2,
     "ManagementCompanyId": 2,
-    "CreateDate" : "2018-01-01T00:00:00-00:00"
+    "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
     "HomeId": 6,
@@ -40,5 +40,12 @@
     "Number": 31,
     "ManagementCompanyId": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "HomeId": 3,
+    "Street": "Lenina",
+    "Number": 9,
+    "ManagementCompanyId": 3,
+    "CreateDate": "2018-02-01T00:00:00-00:00"
   }
 ]

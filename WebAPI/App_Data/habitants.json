@@ -34,5 +34,14 @@
     "HomeId": 4,
     "Apartment": 42,
     "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "HabitantId": 6,
+    "Name": "Viktor",
+    "CompanyId": 2,
+    "Surname": "Mak",
+    "HomeId": 3,
+    "Apartment": 3,
+    "CreateDate": "2018-02-01T00:00:00-00:00"    
   }
 ]
