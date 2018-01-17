@@ -18,6 +18,7 @@
             userName: '',
             email: '',
             password: '',
+            role: '',
             confirmPassword: ''
         };
 
@@ -53,7 +54,8 @@
                 function (data) {
                     vm.message = "";
                     vm.password = "";
-                    currentUser.setProfile(vm.userData.userName, data.access_token);
+                    vm.alldata = data;
+                    currentUser.setProfile(vm.userData.userName, data.userData.role, data.access_token);
                 },
                 function (response) {
                     vm.password = "";

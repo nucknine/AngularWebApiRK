@@ -27,6 +27,8 @@ namespace WebAPI.Models
 
     public class UserInfoViewModel
     {
+        public IList<string> Role { get; set; }
+
         public string Email { get; set; }
 
         public bool HasRegistered { get; set; }

@@ -10,11 +10,13 @@
         var profile = {
             isLoggedIn: false,
             username: "",
+            role: "",
             token: ""
         };
 
-        var setProfile = function (username, token) {
+        var setProfile = function (username, role, token) {
             profile.username = username;
+            profile.role = role;
             profile.token = token;
             profile.isLoggedIn = true;
         };

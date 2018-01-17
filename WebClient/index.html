@@ -42,7 +42,14 @@
             </div>
         </div>
     </nav>
-
+    <div>
+        email: {{vm.userData.email}}
+        role: {{vm.userData.role}}
+        <hr />
+        userData: {{vm.userData}}
+        <hr />
+        allData: {{vm.alldata}}
+    </div>
     <div class="container">
         <div ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
     </div>
