@@ -59,12 +59,9 @@ namespace WebAPI.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-            var homeController = new HomeController();
-            var roles = homeController.GetRoles();
-
+                                  
             return new UserInfoViewModel
-            {
-                Role = roles, 
+            {                
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null

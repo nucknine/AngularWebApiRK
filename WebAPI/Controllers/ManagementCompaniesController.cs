@@ -12,10 +12,12 @@ using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
+    [Authorize()]
     [EnableCorsAttribute("*", "*", "*")]
     public class ManagementCompaniesController : ApiController
     {
         // GET: api/ManagementCompanies
+
         [EnableQuery()]
         [ResponseType(typeof(ManagementCompany))]
         public IHttpActionResult Get()
@@ -34,8 +36,7 @@ namespace APM.WebAPI.Controllers
 
 
         // GET: api/ManagementCompanies/5
-        [ResponseType(typeof(ManagementCompany))]
-        //[Authorize()]
+        [ResponseType(typeof(ManagementCompany))]        
         public IHttpActionResult Get(int id)
         {
             try
@@ -68,7 +69,7 @@ namespace APM.WebAPI.Controllers
         [ResponseType(typeof(List<Home>))]
         public IHttpActionResult Get(int id, bool flag)
         {
-            if (flag) { }
+            
             try
             {
                 var managementCompanyRepository = new ManagementCompanyRepository();
@@ -89,6 +90,7 @@ namespace APM.WebAPI.Controllers
         }
 
         // POST: api/ManagementCompanies
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(ManagementCompany))]
         public IHttpActionResult Post([FromBody]ManagementCompany managementCompany)
         {
@@ -118,9 +120,10 @@ namespace APM.WebAPI.Controllers
                 return InternalServerError(ex);
             }
         }
-               
+
 
         // PUT: api/ManagementCompanies/5
+        [Authorize(Roles = "admin")]
         public IHttpActionResult Put(int id, [FromBody]ManagementCompany managementCompany)
         {
             try
@@ -149,6 +152,7 @@ namespace APM.WebAPI.Controllers
         }
 
         // DELETE: api/ManagementCompanies/5
+        [Authorize(Roles = "admin")]
         public void Delete(int id)
         {
         }

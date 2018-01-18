@@ -42,16 +42,15 @@
             </div>
         </div>
     </nav>
-    <div>
-        email: {{vm.userData.email}}
-        role: {{vm.userData.role}}
+    <div>        
         <hr />
-        userData: {{vm.userData}}
+        vmData: {{vm}}
         <hr />
-        allData: {{vm.alldata}}
+        
     </div>
     <div class="container">
-        <div ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
+        <div ng-if="vm.isLoggedIn()"
+             ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
     </div>
 
     <div class="container">

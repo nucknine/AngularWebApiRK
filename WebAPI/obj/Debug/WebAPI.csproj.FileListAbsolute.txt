@@ -273,8 +273,8 @@ C:\Users\Oleg\source\repos\APMRK\WebAPI\bin\ru\Microsoft.Owin.Security.Google.re
 C:\Users\Oleg\source\repos\APMRK\WebAPI\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Oleg\source\repos\APMRK\WebAPI\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Oleg\source\repos\APMRK\WebAPI\bin\ru\System.Web.Http.Owin.resources.dll
-C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.pdb
 C:\Users\nucknine\source\repos\AngularWebApiRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache

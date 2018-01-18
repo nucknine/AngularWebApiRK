@@ -11,12 +11,13 @@
         vm.managementCompany = {};
         vm.message = '';
         vm.title = '';
-        vm.id = 0;
+        vm.id = 2;
 
         vm.select = function () {
             managementCompaniesResource.get({ id: vm.id },
                 function (data) {
                     vm.managementCompany = data;
+                    console.log('data:' + data);
                     vm.originalManagementCompany = angular.copy(data);
 
                     if (vm.managementCompany.managementCompanyId && vm.managementCompany.name) {
@@ -26,7 +27,7 @@
                         vm.title = "New Management Company";
                     }
                 },
-                function (response) {
+                function (response) {                    
                     vm.message = response.statusText + "\r\n";
                     if (response.data.exceptionMessage)
                         vm.message += response.data.exceptionMessage;

@@ -12,13 +12,20 @@
     function managementCompaniesResource($resource, appSettings, currentUser) {
         return $resource(appSettings.serverPath + "/api/ManagementCompanies/:id/:flag", null,
             {
-                'get': {                        
-                    method: 'GET',
-                    headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
+                'get': {
+                    //isArray: true,   
+                    //params: {
+                    //    id: '@id'                        
+                    //},
+                    url: appSettings.serverPath + '/api/ManagementCompanies/:id',
+                    headers: {
+
+                        'Authorization': 'Bearer ' + currentUser.getProfile().token                        
+                    }
                 },
 
                 'save': {
-                    method: 'POST',
+                    //method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 
@@ -27,16 +34,16 @@
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 }
                 ,
-                'findHomes': {
-                    url: appSettings.serverPath + '/api/ManagementCompanies/:id/:flag',
+                'findHomes': {                    
                     method: 'GET',
                     isArray: true,
+                    headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token },
                     params: {
                         id: '@id',
                         flag: '@flag'
                     }
                 }
-                
+
             });
     }
 }());

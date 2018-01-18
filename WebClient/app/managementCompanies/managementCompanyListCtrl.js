@@ -12,11 +12,13 @@
         vm.managementCompanies = {};
         vm.id = [1,2,3];
 
-        managementCompaniesResource.query({
+        managementCompaniesResource.get(
+            //{            
             //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
             //$orderby: "Name desc"
-        },
-            function (data) {
+            //}
+            //,
+            function (data) {                
                 vm.managementCompanies = data;
             });
         

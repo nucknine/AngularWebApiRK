@@ -4,9 +4,9 @@
     angular
         .module("companyManagement")
         .controller("MainCtrl",
-                    ["userAccount",
-                        "currentUser",
-                        MainCtrl]);
+        ["userAccount",
+            "currentUser",
+            MainCtrl]);
 
     function MainCtrl(userAccount, currentUser) {
         var vm = this;
@@ -18,7 +18,6 @@
             userName: '',
             email: '',
             password: '',
-            role: '',
             confirmPassword: ''
         };
 
@@ -54,8 +53,7 @@
                 function (data) {
                     vm.message = "";
                     vm.password = "";
-                    vm.alldata = data;
-                    currentUser.setProfile(vm.userData.userName, data.userData.role, data.access_token);
+                    currentUser.setProfile(vm.userData.userName, data.access_token);
                 },
                 function (response) {
                     vm.password = "";

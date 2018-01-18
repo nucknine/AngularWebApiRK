@@ -13,5 +13,10 @@
     "ManagementCompanyId": 3,
     "Name": "RussianDom",
     "CreateDate": "2018-01-15T10:14:06.6047943+03:00"
+  },
+  {
+    "ManagementCompanyId": 4,
+    "Name": "NewCom",
+    "CreateDate": "2018-01-18T12:27:31.9014539+03:00"
   }
 ]
