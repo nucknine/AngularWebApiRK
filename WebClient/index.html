@@ -42,14 +42,13 @@
             </div>
         </div>
     </nav>
-    <div>        
-        <hr />
-        vmData: {{vm}}
-        <hr />
-        
-    </div>
+
     <div class="container">
-        <div ng-if="vm.isLoggedIn()"
+        <div ng-include="'app/homes/homeListView.html'"></div>
+    </div>
+
+    <div class="container">
+        <div 
              ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
     </div>
 
@@ -57,7 +56,7 @@
         <div ng-if="vm.isLoggedIn()"
              ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
     </div>
-
+    <!--ng-if="vm.isLoggedIn()"-->
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>    
     <script src="Scripts/angular-resource.js"></script>
@@ -70,13 +69,15 @@
     <!-- Services -->
     <script src="common/common.services.js"></script>
     <script src="common/managementCompaniesResource.js"></script>
+    <script src="common/homesResource.js"></script>
     <script src="common/userAccount.js"></script>
     <script src="common/currentUser.js"></script>
     
 
     <!-- ManagementCompany Controllers -->
     <script src="app/managementCompanies/managementCompanyListCtrl.js"></script>
-    <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>
+    <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>    
+    <script src="app/homes/homeListCtrl.js"></script>
     <script src="app/mainCtrl.js"></script>
     
    

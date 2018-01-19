@@ -21,6 +21,7 @@
             confirmPassword: ''
         };
 
+        
         vm.registerUser = function () {
             vm.userData.confirmPassword = vm.userData.password;
 
@@ -65,6 +66,8 @@
                         vm.message += response.data.error;
                     }
                 });
+
+            
         }
     }
 })();

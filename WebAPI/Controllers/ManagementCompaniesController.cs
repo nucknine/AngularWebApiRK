@@ -3,19 +3,40 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
+using System.Web.Security;
 using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
-    [Authorize()]
+    //[Authorize()]
     [EnableCorsAttribute("*", "*", "*")]
     public class ManagementCompaniesController : ApiController
     {
+
+        [Route("GetRole")]
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult GetRole()
+        {
+
+            string[] rolesArray;
+            var roles = new Role();
+            
+            //rolesArray = Roles.GetRolesForUser();
+            //var role = rolesArray.FirstOrDefault().ToString();
+            //var id = User.Identity.GetUserId();
+            //var role = UserManager.GetRoles(id).ToString();
+
+            return Ok(new Role
+            {
+                UserRole = "dssdds"
+            });
+        }
+
         // GET: api/ManagementCompanies
 
         [EnableQuery()]
@@ -26,7 +47,6 @@ namespace APM.WebAPI.Controllers
             {
                 var managementCompanyRepository = new ManagementCompanyRepository();
                 return Ok(managementCompanyRepository.Retrieve().AsQueryable());
-
             }
             catch (Exception ex)
             {
@@ -90,7 +110,7 @@ namespace APM.WebAPI.Controllers
         }
 
         // POST: api/ManagementCompanies
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, company")]
         [ResponseType(typeof(ManagementCompany))]
         public IHttpActionResult Post([FromBody]ManagementCompany managementCompany)
         {
@@ -123,7 +143,7 @@ namespace APM.WebAPI.Controllers
 
 
         // PUT: api/ManagementCompanies/5
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, company")]
         public IHttpActionResult Put(int id, [FromBody]ManagementCompany managementCompany)
         {
             try

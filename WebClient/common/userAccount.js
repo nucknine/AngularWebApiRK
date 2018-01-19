@@ -14,6 +14,7 @@
                 {
                     'registerUser': { method: 'POST' }
                 }),
+
             login: $resource(appSettings.serverPath + "/Token", null,
                 {
                     'loginUser': {

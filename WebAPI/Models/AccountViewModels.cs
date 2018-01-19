@@ -40,4 +40,5 @@ namespace WebAPI.Models
 
         public string ProviderKey { get; set; }
     }
+    
 }

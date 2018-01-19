@@ -12,20 +12,19 @@
     function managementCompaniesResource($resource, appSettings, currentUser) {
         return $resource(appSettings.serverPath + "/api/ManagementCompanies/:id/:flag", null,
             {
-                'get': {
-                    //isArray: true,   
-                    //params: {
-                    //    id: '@id'                        
-                    //},
-                    url: appSettings.serverPath + '/api/ManagementCompanies/:id',
+                'get': {                    
                     headers: {
-
                         'Authorization': 'Bearer ' + currentUser.getProfile().token                        
                     }
                 },
+                'query': {
+                    isArray: true,
+                    headers: {
+                        'Authorization': 'Bearer ' + currentUser.getProfile().token
+                    }
+                },
 
-                'save': {
-                    //method: 'POST',
+                'save': {                    
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 
@@ -42,7 +41,14 @@
                         id: '@id',
                         flag: '@flag'
                     }
-                }
+                },                
+
+            'roleUser': {
+                method: 'GET',
+                url: appSettings.serverPath + "api/GetRole",
+                headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
+                    
+                }            
 
             });
     }

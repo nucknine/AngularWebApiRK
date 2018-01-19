@@ -1,17 +1,25 @@
 ﻿using APM.WebAPI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
+using System.Web.Security;
+using WebAPI;
 using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
-    
+    [EnableCorsAttribute("*", "*", "*")]
     public class HomesController : ApiController
     {
         // GET: api/homes
@@ -31,35 +39,72 @@ namespace APM.WebAPI.Controllers
             }
         }
 
+        
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
         // GET: api/homes/5
-        [ResponseType(typeof(Home))]
-        [Authorize()]
+        //[ResponseType(typeof(Home))]
+        //[Authorize()]
         public IHttpActionResult Get(int id)
         {
-            try
-            {
-                Home home;
-                var homeRepository = new HomeRepository();
+            //var rolesArray = Roles.GetRolesForUser();
+            //var role = rolesArray.FirstOrDefault().ToString();
+            //var ids = User.Identity.GetUserId();
+            //var role = UserManager.GetRoles(ids).ToString();
 
-                if (id > 0)
-                {
-                    var homes = homeRepository.Retrieve();
-                    home = homes.FirstOrDefault(p => p.HomeId == id);
-                    if (home == null)
-                    {
-                        return NotFound();
-                    }
-                }
-                else
-                {
-                    home = homeRepository.Create();
-                }
-                return Ok(home);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
+            IList<string> roles = new List<string> { "Роль не определена" };
+
+            ApplicationUserManager userManager = Request.GetOwinContext()
+                                           .GetUserManager<ApplicationUserManager>();
+
+
+            //ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
+            //if (user != null)
+            //    roles = userManager.GetRoles(user.Id);
+            //userManager.FindById(User.Identity.GetUserId())
+
+            ClaimsIdentity identity = new ClaimsIdentity(new GenericIdentity(user.UserName, "TokenAuth"),
+            new[] { new Claim(ClaimTypes.NameIdentifier, userId) });
+
+
+            return Ok(RequestContext.Principal.Identity.GetUserId());
+            
+                //try
+            //{
+            //    Home home;
+            //    var homeRepository = new HomeRepository();
+
+            //    if (id > 0)
+            //    {
+            //        var homes = homeRepository.Retrieve();
+            //        home = homes.FirstOrDefault(p => p.HomeId == id);
+            //        if (home == null)
+            //        {
+            //            return NotFound();
+            //        }
+            //    }
+            //    else
+            //    {
+            //        home = homeRepository.Create();
+            //    }
+            //    return Ok(home);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return InternalServerError(ex);
+            //}
         }
 
 

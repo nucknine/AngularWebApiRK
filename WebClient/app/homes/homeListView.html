@@ -1,0 +1,27 @@
+<div class="panel panel-primary"
+     ng-controller="homeListCtrl as vm">
+    <div class="panel-heading"
+         style="font-size:large">
+        Home List
+    </div>
+    <button ng-click="vm.test()">
+        test
+    </button>
+    {{vm.data}}
+    <div class="panel-group">
+        <div class="panel panel-default"
+             ng-repeat="home in vm.homes">
+            <div class="panel-heading">Home: {{ home.homeId }}</div>
+
+            <div class="panel-body">
+                <div class="col-md-4">Street: {{ home.street }}</div>
+                <div class="col-md-4">House number: {{ home.number }}</div>
+                <div class="col-md-4">Management Company: {{ home.managementCompanyId }}</div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

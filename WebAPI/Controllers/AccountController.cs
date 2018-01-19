@@ -32,6 +32,8 @@ namespace WebAPI.Controllers
         {
         }
 
+        
+
         public AccountController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
@@ -50,7 +52,7 @@ namespace WebAPI.Controllers
                 _userManager = value;
             }
         }
-
+                
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
@@ -59,7 +61,7 @@ namespace WebAPI.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-                                  
+                                    
             return new UserInfoViewModel
             {                
                 Email = User.Identity.GetUserName(),
