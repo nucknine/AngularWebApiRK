@@ -23,7 +23,7 @@ namespace APM.WebAPI.Controllers
         public IHttpActionResult GetRole()
         {
 
-            string[] rolesArray;
+            //string[] rolesArray;
             var roles = new Role();
             
             //rolesArray = Roles.GetRolesForUser();

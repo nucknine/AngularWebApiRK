@@ -22,12 +22,12 @@
 
 
         vm.test = function () {
-            homesResource.get({ id: 2 },
+            homesResource.query({ id: 2 },
 
                 function (data) {
                     vm.data = data;
                 });
-        }
+        };
         
                 
     }
