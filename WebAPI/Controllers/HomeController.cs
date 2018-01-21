@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using WebAPI.Models;
 
@@ -15,21 +16,7 @@ namespace WebAPI.Controllers
         {            
             return View();
             
-        }
-
-        public IList<string> GetRoles()
-        {
-            IList<string> roles = new List<string> { "Роль не определена" };
-
-            ApplicationUserManager userManager = HttpContext.GetOwinContext()
-                                                    .GetUserManager<ApplicationUserManager>();
-
-            ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
-
-            if (user != null)
-                roles = userManager.GetRoles(user.Id);
-
-            return roles;
-        }
+        }       
+        
     }
 }

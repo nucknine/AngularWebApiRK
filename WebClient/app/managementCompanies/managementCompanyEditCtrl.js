@@ -34,7 +34,8 @@
                         vm.message += response.data.exceptionMessage;
                 });
 
-            managementCompaniesResource.roleUser({},
+            managementCompaniesResource.roleUser(
+
                 function (data) {
                     console.log(data);
                 });
