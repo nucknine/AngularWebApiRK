@@ -12,9 +12,9 @@
     function managementCompaniesResource($resource, appSettings, currentUser) {
         return $resource(appSettings.serverPath + "/api/ManagementCompanies/:id/:flag", null,
             {
-                'get': {                    
+                'get': {
                     headers: {
-                        'Authorization': 'Bearer ' + currentUser.getProfile().token                        
+                        'Authorization': 'Bearer ' + currentUser.getProfile().token
                     }
                 },
                 'query': {
@@ -24,7 +24,7 @@
                     }
                 },
 
-                'save': {                    
+                'save': {
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 
@@ -33,7 +33,7 @@
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 }
                 ,
-                'findHomes': {                    
+                'findHomes': {
                     method: 'GET',
                     isArray: true,
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token },
@@ -41,15 +41,7 @@
                         id: '@id',
                         flag: '@flag'
                     }
-                },                
-
-            'roleUser': {
-                method: 'GET',
-                url: appSettings.serverPath + "api/GetRole",
-                headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
-                    
-                }            
-
+                }
             });
     }
 }());

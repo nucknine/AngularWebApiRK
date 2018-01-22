@@ -4,9 +4,7 @@
     angular
         .module("companyManagement")
         .controller("MainCtrl",
-        ["userAccount",
-            "currentUser",
-            MainCtrl]);
+        ["userAccount", "currentUser", MainCtrl]);
 
     function MainCtrl(userAccount, currentUser) {
         var vm = this;
@@ -15,13 +13,14 @@
         };
         vm.message = '';
         vm.userData = {
+            role: '',
             userName: '',
             email: '',
             password: '',
             confirmPassword: ''
         };
 
-        
+
         vm.registerUser = function () {
             vm.userData.confirmPassword = vm.userData.password;
 
@@ -44,7 +43,7 @@
                         }
                     }
                 });
-        }
+        };
 
         vm.login = function () {
             vm.userData.grant_type = "password";
@@ -67,7 +66,16 @@
                     }
                 });
 
-            
-        }
+
+            userAccount.role.roleUser({ name: vm.userData.userName },
+                function (data) {
+                    vm.userData.role = data[0][0];
+                },
+                function (response) {
+                    console.log(response);
+                }
+
+            );
+        };
     }
 })();

@@ -17,26 +17,7 @@ namespace APM.WebAPI.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class ManagementCompaniesController : ApiController
     {
-
-        [Route("GetRole")]
-        [ResponseType(typeof(Role))]
-        public IHttpActionResult GetRole()
-        {
-
-            //string[] rolesArray;
-            var roles = new Role();
-            
-            //rolesArray = Roles.GetRolesForUser();
-            //var role = rolesArray.FirstOrDefault().ToString();
-            //var id = User.Identity.GetUserId();
-            //var role = UserManager.GetRoles(id).ToString();
-
-            return Ok(new Role
-            {
-                UserRole = "dssdds"
-            });
-        }
-
+                
         // GET: api/ManagementCompanies
 
         [EnableQuery()]

@@ -5,18 +5,27 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Authorize]
+    [EnableCorsAttribute("*", "*", "*")]
+    [AllowAnonymous]
     public class ValuesController : ApiController
-    {
-
-        [Route("api/GetRole")]
-        public IHttpActionResult GetRoles()
+    {        
+        
+        // GET api/values
+        public IEnumerable<string> Get()
         {
-            var name = "admin@mail.ru";
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/values/name
+        
+        public IHttpActionResult Get(string name)
+        {
+            //name = "admin@mail.ru";
             var applicationDbContext = Request.GetOwinContext().Get<ApplicationDbContext>();
 
             var users = from user in applicationDbContext.Users
@@ -31,17 +40,6 @@ namespace WebAPI.Controllers
             var role = users.Where(r => r.UserName == name).Select(u => u.Roles).ToList();
 
             return Ok(role);
-        }
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST api/values

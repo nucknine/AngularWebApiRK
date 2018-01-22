@@ -6,7 +6,7 @@
         .factory("userAccount",
         ["$resource",
             "appSettings",
-            userAccount])
+            userAccount]);
 
     function userAccount($resource, appSettings) {
         return {
@@ -29,7 +29,21 @@
                         }
 
                     }
+                }),
+
+            role: $resource(appSettings.serverPath + "/api/values/name", null,
+                {
+                    'roleUser': {
+                        method: 'GET',
+                        isArray: true,
+                        //headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token },
+                        params: {
+                            name: '@name'
+                        }
+                    }
                 })
-        }
+        };
+
     }
 })();
+
