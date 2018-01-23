@@ -1,0 +1,27 @@
+<div class="panel panel-primary"
+     ng-controller="habitantListCtrl as vm">
+    <div class="panel-heading"
+         style="font-size:large">
+        Habitant List 
+    </div>
+    <button ng-click="vm.test()">
+        test
+    </button>
+    {{vm.data}}
+    <div class="panel-group">
+        <div class="panel panel-default"
+             ng-repeat="habitant in vm.habitants">
+            <div class="panel-heading">Habitant: {{ habitant.habitantId }}</div>
+
+            <div class="panel-body">
+                <div class="col-md-4">Street: {{ habitant.street }}</div>
+                <div class="col-md-4">House number: {{ habitant.number }}</div>
+                <div class="col-md-4">Management Company: {{ habitant.managementCompanyId }}</div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

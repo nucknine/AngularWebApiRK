@@ -11,7 +11,7 @@ using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
-    
+
     public class HabitantsController : ApiController
     {
         // GET: api/Habitants
@@ -31,9 +31,33 @@ namespace APM.WebAPI.Controllers
             }
         }
 
+
+        // GET: api/Habitants/email
+        //[ResponseType(typeof(Habitant))]
+        //public IHttpActionResult Get(string email)
+        //{
+        //    try
+        //    {
+        //        Habitant habitant;
+        //        var habitantRepository = new HabitantRepository();
+
+        //        var habitants = habitantRepository.Retrieve();
+        //        habitant = habitants.FirstOrDefault(p => p.Email == email);
+        //        if (habitant == null)
+        //        {
+        //            habitant = habitantRepository.Create();
+        //        }
+        //        return Ok(habitant);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
+
+
         // GET: api/Habitants/5
-        [ResponseType(typeof(Habitant))]
-        [Authorize()]
+        [ResponseType(typeof(Habitant))]        
         public IHttpActionResult Get(int id)
         {
             try

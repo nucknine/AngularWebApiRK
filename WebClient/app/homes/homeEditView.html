@@ -1,35 +1,35 @@
 <form class="form-horizontal"
-      name="managementCompanyForm"
+      name="homeForm"
       novalidate
-      ng-controller="managementCompanyEditCtrl as vm">
-    <fieldset>
-        <legend>{{vm.title}}</legend>
+      ng-controller="homeEditCtrl as vm">
+    <fieldset> 
+        <legend>{{vm.title}}</legend> 
         <div class="form-group"
-             ng-class="{'has-error':managementCompanyForm.inputManagementCompanyName.$invalid &&
-                                    managementCompanyForm.inputManagementCompanyName.$dirty}">
+             ng-class="{'has-error':homeForm.inputHomeName.$invalid &&
+                                    homeForm.inputHomeName.$dirty}">
             <label class="col-md-2 control-label"
-                   for="inputManagementCompanyName">ManagementCompany Name</label>
+                   for="inputHomeName">Home Name</label>
 
             <div class="col-md-4">
                 <input class="form-control"
-                       id="inputManagementCompanyName"
-                       name="inputManagementCompanyName"
+                       id="inputHomeName"
+                       name="inputHomeName"
                        type="text"
-                       placeholder="ManagementCompany Name (required)"
-                       ng-model="vm.managementCompany.name"
+                       placeholder="Home Name (required)"
+                       ng-model="vm.home.name"
                        required
                        ng-minlength="4"
                        ng-maxlength="12" />
             </div>
             <span class="help-block has-error">
-                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.required">
-                    Management Company name is required.
+                <span ng-show="homeForm.inputHomeName.$error.required">
+                    Home name is required.
                 </span>
-                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.minlength">
-                    Management Company name must be at least 4 characters in length.
+                <span ng-show="homeForm.inputHomeName.$error.minlength">
+                    Home name must be at least 4 characters in length.
                 </span>
-                <span ng-show="managementCompanyForm.inputManagementCompanyName.$error.maxlength">
-                    Management Company name cannot exceed 12 characters in length.
+                <span ng-show="homeForm.inputHomeName.$error.maxlength">
+                    Home name cannot exceed 12 characters in length.
                 </span>
             </span>
         </div>        
@@ -40,14 +40,14 @@
 
             <div class="col-md-4">
                 <div class="form-control">
-                    {{vm.managementCompany.createDate | date}}
+                    {{vm.home.createDate | date}}
                 </div>
             </div>
         </div>
 
         <!--получние всех компаний listCrtrl-->
         <div class="form-group"
-             ng-controller="managementCompanyListCtrl as dm">
+             ng-controller="homeListCtrl as dm">
 
             <label class="col-md-2 control-label"
                    for="SelectAction">
@@ -59,8 +59,8 @@
                 <div class="form-control">
                     <select ng-model="vm.id" id="SelectAction">
                         <option value="0" selected>Create new</option>
-                        <option ng-repeat="company in dm.managementCompanies"
-                                value="{{company.managementCompanyId}}">
+                        <option ng-repeat="company in dm.homes"
+                                value="{{company.homeId}}">
                             Edit {{company.name}}
                         </option>
                     </select>
@@ -82,14 +82,14 @@
                     <button class="btn btn-primary"
                             style="width:80px;margin-right:10px"
                             ng-click="vm.submit()"
-                            ng-disabled="managementCompanyForm.$invalid">
+                            ng-disabled="homeForm.$invalid">
                         Save
                     </button>
                 </span>
                 <span>
                     <button class="btn btn-default"
                             style="width:70px"
-                            ng-click="vm.cancel(managementCompanyForm)">
+                            ng-click="vm.cancel(homeForm)">
                         Cancel
                     </button>
                 </span>

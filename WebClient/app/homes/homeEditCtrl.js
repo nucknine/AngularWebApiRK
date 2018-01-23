@@ -3,12 +3,12 @@
 
     angular
         .module("companyManagement")
-        .controller("managementCompanyEditCtrl",
-        managementCompanyEditCtrl);
+        .controller("homeEditCtrl",
+        homeEditCtrl); 
 
-    function managementCompanyEditCtrl(managementCompaniesResource) {
+    function homeEditCtrl(homesResource) {
         var vm = this;
-        vm.managementCompany = {};
+        vm.home = {};
         vm.message = '';
         vm.title = '';
         vm.id = 2;
@@ -16,16 +16,16 @@
 
 
         vm.select = function () {
-            managementCompaniesResource.get({ id: vm.id },
+            homesResource.get({ id: vm.id },
                 function (data) {
-                    vm.managementCompany = data;
-                    vm.originalmanagementCompany = angular.copy(data);
+                    vm.home = data;
+                    vm.originalhome = angular.copy(data);
 
-                    if (vm.managementCompany.managementCompanyId && vm.managementCompany.name) {
-                        vm.title = "Edit: " + vm.managementCompany.name;
+                    if (vm.home.homeId && vm.home.name) {
+                        vm.title = "Edit: " + vm.home.name;
                     }
                     else {
-                        vm.title = "New Management Company";
+                        vm.title = "New Home";
                     }
                 },
                 function (response) {
@@ -34,7 +34,7 @@
                         vm.message += response.data.exceptionMessage;
                 });
 
-            managementCompaniesResource.roleUser({},
+            homesResource.roleUser({},
                 function (data) {
                     console.log(data);
                 });
@@ -45,8 +45,8 @@
 
         vm.submit = function () {
             vm.message = '';
-            if (vm.managementCompany.managementCompanyId) {
-                vm.managementCompany.$update({ id: vm.managementCompany.managementCompanyId },
+            if (vm.home.homeId) {
+                vm.home.$update({ id: vm.home.homeId },
                     function (data) {
                         vm.message = "... Save Complete";
                     },
@@ -62,9 +62,9 @@
                     });
             }
             else {
-                vm.managementCompany.$save(
+                vm.home.$save(
                     function (data) {
-                        vm.originalManagementCompany = angular.copy(data);
+                        vm.originalHome = angular.copy(data);
 
                         vm.message = "... Save Complete";
                     },
@@ -83,7 +83,7 @@
 
         vm.cancel = function (editForm) {
             editForm.$setPristine();
-            vm.managementCompany = angular.copy(vm.originalManagementCompany);
+            vm.home = angular.copy(vm.originalHome);
             vm.message = "";
         };
 

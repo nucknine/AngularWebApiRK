@@ -11,7 +11,7 @@
         vm.managementCompany = {};
         vm.message = '';
         vm.title = '';
-        vm.id = 2;
+        vm.id = 0;
 
 
 

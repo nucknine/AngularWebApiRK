@@ -41,7 +41,7 @@
                 </form>
             </div>
         </div>
-    </nav>    
+    </nav>
 
     <div class="container">
         <div ng-if="vm.userData.role == 'admin'"
@@ -57,9 +57,14 @@
         <div ng-if="vm.userData.role == 'admin'"
              ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
     </div>
+
+    <div class="container">
+        <div ng-include="'app/habitants/habitantEditView.html'"></div>
+    </div>
+
     <!--ng-if="vm.isLoggedIn()"-->
     <!-- Library Scripts -->
-    <script src="scripts/angular.js"></script>    
+    <script src="scripts/angular.js"></script>
     <script src="Scripts/angular-resource.js"></script>
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
@@ -71,17 +76,19 @@
     <script src="common/common.services.js"></script>
     <script src="common/managementCompaniesResource.js"></script>
     <script src="common/homesResource.js"></script>
+    <script src="common/habitantsResource.js"></script>
     <script src="common/userAccount.js"></script>
     <script src="common/currentUser.js"></script>
-    
+
 
     <!-- ManagementCompany Controllers -->
     <script src="app/managementCompanies/managementCompanyListCtrl.js"></script>
-    <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>    
+    <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>
     <script src="app/homes/homeListCtrl.js"></script>
+    <script src="app/habitants/habitantEditCtrl.js"></script>
     <script src="app/mainCtrl.js"></script>
-    
-   
+
+
 </body>
 
 </html>
