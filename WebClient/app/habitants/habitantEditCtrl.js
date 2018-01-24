@@ -3,46 +3,57 @@
 
     angular
         .module("companyManagement")
-        .controller("habitantEditCtrl", [
-            "currentUser",
-            "habitantsResource",
-        habitantEditCtrl]);
+        .controller("habitantEditCtrl",
+        habitantEditCtrl);
+
+    //.controller("MainCtrl",
+    //    ["userAccount", "currentUser", MainCtrl]);
 
     function habitantEditCtrl(habitantsResource, currentUser) {
         var vm = this;
-        vm.habitant = {};
+        vm.habitant;
         vm.message = '';
         vm.title = '';
-        vm.email = 'habitant1@mail.ru';//curentUser.getProfile();
-        
-        habitantsResource.query(
-            {     
-                $filter: "contains(Email, '"+'habitant1@mail.ru'+"')"        
-            },
-            function (data) {
-                vm.habitant = data;
-                vm.originalhabitant = angular.copy(data);
+        vm.email = currentUser.getProfile().username;
 
-                if (vm.habitant.habitantId && vm.habitant.name) {
-                    vm.title = "Edit: " + vm.habitant.name;
-                }
-                else {
-                    vm.title = "New Habitant";
-                }
+        if (vm.email) {
+            habitantsResource.query(
+                {
+                    $filter: "startswith(Email, '" + vm.email + "')",
+                },
+                function (data) {
+                    vm.habitant = data;
+                    vm.originalhabitant = angular.copy(data);
+                    console.log(data);
+                    if (vm.habitant[0].habitantId && vm.habitant[0].name && vm.email == vm.habitant[0].email) {
+                        vm.title = "Edit: " + vm.habitant[0].name + ' ' + vm.habitant[0].surname;
+                    }
+                    else {
+                        vm.title = "New Habitant";
 
-            },
-            function (response) {
-                vm.message = response.statusText + "\r\n";
-                if (response.data.exceptionMessage)
-                    vm.message += response.data.exceptionMessage;
-            }
-        );
-               
+                        habitantsResource.get(
+                            { id: 0 },                            
+                            function (data) {
+                                vm.habitant = data;
+                                vm.originalhabitant = angular.copy(data);
+                            }
+                        );
+                    }
+
+                },
+                function (response) {
+                    vm.message = response.statusText + "\r\n";
+                    if (response.data.exceptionMessage)
+                        vm.message += response.data.exceptionMessage;
+                }
+            );
+        }
+
 
         vm.submit = function () {
             vm.message = '';
-            if (vm.habitant.habitantId) {
-                vm.habitant.$update({ id: vm.habitant.habitantId },
+            if (vm.habitant[0].habitantId) {
+                vm.habitant[0].$update({ id: vm.habitant[0].habitantId },
                     function (data) {
                         vm.message = "... Save Complete";
                     },
@@ -58,7 +69,7 @@
                     });
             }
             else {
-                vm.habitant.$save(
+                vm.habitant[0].$save(
                     function (data) {
                         vm.originalHabitant = angular.copy(data);
 

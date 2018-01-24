@@ -57,9 +57,10 @@
         <div ng-if="vm.userData.role == 'admin'"
              ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
     </div>
-
+    <!-- " -->
     <div class="container">
-        <div ng-include="'app/habitants/habitantEditView.html'"></div>
+        <div ng-if="vm.userData.role == 'user'"
+             ng-include="'app/habitants/habitantEditView.html'"></div>
     </div>
 
     <!--ng-if="vm.isLoggedIn()"-->
@@ -84,8 +85,11 @@
     <!-- ManagementCompany Controllers -->
     <script src="app/managementCompanies/managementCompanyListCtrl.js"></script>
     <script src="app/managementCompanies/managementCompanyEditCtrl.js"></script>
+
     <script src="app/homes/homeListCtrl.js"></script>
+
     <script src="app/habitants/habitantEditCtrl.js"></script>
+
     <script src="app/mainCtrl.js"></script>
 
 

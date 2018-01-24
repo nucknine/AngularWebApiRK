@@ -8,7 +8,7 @@
             "appSettings",
             "currentUser",
             habitantsResource]);
-
+    
     function habitantsResource($resource, appSettings, currentUser) {
         return $resource(appSettings.serverPath + "/api/Habitants/:id", null,
             {
@@ -19,7 +19,7 @@
                 },
 
                 'query': {
-                    //isArray: true,
+                    isArray: true,
                     headers: {
                         'Authorization': 'Bearer ' + currentUser.getProfile().token
                     }

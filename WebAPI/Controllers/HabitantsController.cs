@@ -5,13 +5,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.OData;
 using WebAPI.Models;
 
 namespace APM.WebAPI.Controllers
 {
-
+    [EnableCorsAttribute("*", "*", "*")]
     public class HabitantsController : ApiController
     {
         // GET: api/Habitants
