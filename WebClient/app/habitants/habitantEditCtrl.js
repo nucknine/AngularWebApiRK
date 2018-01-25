@@ -45,7 +45,7 @@
                 vm.homes = data;
             });
 
-        
+
         habitantsResource.query(
             {
                 $filter: "startswith(Email, '" + vm.email + "')",
@@ -53,24 +53,41 @@
             function (data) {
                 vm.habitantId = data[0].habitantId;
 
+                if (vm.habitantId) {                    
 
-                console.log(data[0].habitantId);
+                    habitantsResource.get({ id: vm.habitantId },
+                        function (data) {
+                            vm.habitant = data;
+                            vm.originalHabitant = angular.copy(data);
+                        }
+                    );
+
+                    console.log('vm.habitant.habitantId ' + vm.habitant.habitantId);
+                    console.log(vm.habitant);
+
+                    if (vm.habitant && vm.habitant.habitantId) {
+                        vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
+                    }
+                    else {
+                        vm.title = "New Habitant";
+                    }
+                }
             });
-                //if (vm.habitant.name == data[0].name) {
-                //    vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
-                //    console.log("EDIT");
-                //}
-                //else {
-                //    vm.title = "New Habitant";
-                //    console.log("NEW");
-                //    habitantsResource.get(
-                //        { id: 0 },
-                //        function (data) {
-                //            vm.habitant = data;
-                //            vm.originalhabitant = angular.copy(data);
-                //        }
-                //    );
-                //}
+        //if (vm.habitant.name == data[0].name) {
+        //    vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
+        //    console.log("EDIT");
+        //}
+        //else {
+        //    vm.title = "New Habitant";
+        //    console.log("NEW");
+        //    habitantsResource.get(
+        //        { id: 0 },
+        //        function (data) {
+        //            vm.habitant = data;
+        //            vm.originalhabitant = angular.copy(data);
+        //        }
+        //    );
+        //}
 
         //    },
         //    function (response) {
@@ -81,23 +98,9 @@
         //);
 
         //get habitant
-        habitantsResource.get({ id: vm.habitantId },
-            function (data) {
-                vm.habitant = data;
-                vm.originalHabitant = angular.copy(data);
-            },
-            function (response) {
-                vm.message = response.statusText + "\r\n";
-                if (response.data.exceptionMessage)
-                    vm.message += response.data.exceptionMessage;
-            });
 
-        if (vm.habitant && vm.habitant.habitantId) {
-            vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
-        }
-        else {
-            vm.title = "New Habitant";
-        }
+
+        
 
 
 
