@@ -4,13 +4,15 @@
       ng-controller="habitantEditCtrl as vm">
     <fieldset>
         
-        <!--"CompanyId": 1 ???--> 
-        vm EditView: {{vm}}<br>
-        <br>
-        vm.email: {{vm.email}}<br>
-        ----------------------
-        vm.habitant[0].name: {{vm.habitant[0].name}}<br>
-        
+              
+        vm.habitant: {{vm.habitant}}
+        <br /> <br />
+        vm.originalhabitant: {{vm.originalhabitant}}<br>
+        <br /> <br />
+        vm.habitantid: {{vm.habitantid}}
+        <br /> <br />
+        vm: {{vm}}
+        <br /> <br />
         <legend>{{vm.title}}</legend>
 
         <!-- Name -->
@@ -25,7 +27,7 @@
                        name="inputHabitantName"
                        type="text"
                        placeholder="Habitant Name (required)"
-                       ng-model="vm.habitant[0].name"
+                       ng-model="vm.habitant.name"
                        required
                        ng-minlength="4"
                        ng-maxlength="12" />
@@ -55,7 +57,7 @@
                        name="inputHabitantSurname"
                        type="text"
                        placeholder="Habitant Surname (required)"
-                       ng-model="vm.habitant[0].surname"
+                       ng-model="vm.habitant.surname"
                        required
                        ng-minlength="4"
                        ng-maxlength="12" />
@@ -73,6 +75,51 @@
             </span>
         </div>
         <!-- Surname -->
+
+        <!-- List of Houses -->
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputHabitantHouse">Select your House</label>
+            <div class="col-md-4">
+                <select ng-model="vm.habitant.homeId"
+                        ng-change="vm.homeSelect()">                    
+                    <option ng-repeat="home in vm.homes"
+                            value="{{home.homeId}}"                            >
+                        {{home.street}} - {{home.number}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputHabitantHouse">Select your House</label>
+            <div class="col-md-4">
+                <select ng-options="home as home.homeId for home in vm.homes"
+                        ng-model="home" ng-change="update()">
+                    {{home.street}} - {{home.number}}
+                </select>
+            </div>
+        </div>-->
+        <!-- List of Houses -->
+
+
+        <!-- Management Company from selected House ?-->
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputHabitantCompany">Your management Company is:</label>
+            <div class="col-md-4">
+                <input class="form-control"
+                       name="inputHabitantCompany"
+                       type="text"
+                       placeholder="Your company"
+                       ng-model="vm.company"
+                       value="{{vm.companyId}}"
+                       required />
+            </div>
+        </div>
+        <!-- Management Company from selected House -->
+
         <!-- Apartment -->
         <div class="form-group">
             <label class="col-md-2 control-label"
@@ -82,11 +129,11 @@
                        name="inputHabitantName"
                        type="text"
                        placeholder="Apartment N"
-                       ng-model="vm.habitant[0].apartment"
+                       ng-model="vm.habitant.apartment"
                        required />
             </div>
         </div>
-        <!-- Surname -->
+        <!-- Apartment -->
         <!-- RegDate -->
         <div class="form-group">
             <label class="col-md-2 control-label"
@@ -94,7 +141,7 @@
 
             <div class="col-md-4">
                 <div class="form-control">
-                    {{vm.habitant[0].createDate | date}}
+                    {{vm.habitant.createDate | date}}
                 </div>
             </div>
         </div>

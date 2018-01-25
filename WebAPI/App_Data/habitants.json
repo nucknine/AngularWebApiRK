@@ -7,7 +7,7 @@
     "CompanyId": 1,
     "Apartment": 1,
     "CreateDate": "2018-01-01T00:00:00-00:00",
-    "Email" : "habitant1@mail.ru"
+    "Email": "habitant1@mail.ru"
   },
   {
     "HabitantId": 2,
@@ -48,5 +48,15 @@
     "Apartment": 3,
     "CreateDate": "2018-02-01T00:00:00-00:00",
     "Email": "habitant@mail.ru"
+  },
+  {
+    "HabitantId": 6,
+    "Name": "Viktoria",
+    "CompanyId": 2,
+    "Surname": "Mak",
+    "HomeId": 3,
+    "Apartment": 33,
+    "CreateDate": "2018-02-01T00:00:00-00:00",
+    "Email": "habitant20@mail.ru"
   }
 ]

@@ -9,51 +9,102 @@
     //.controller("MainCtrl",
     //    ["userAccount", "currentUser", MainCtrl]);
 
-    function habitantEditCtrl(habitantsResource, currentUser) {
+    function habitantEditCtrl(habitantsResource, homesResource, managementCompaniesResource, currentUser) {
         var vm = this;
         vm.habitant;
         vm.message = '';
         vm.title = '';
         vm.email = currentUser.getProfile().username;
+        vm.homes = {};
 
-        if (vm.email) {
-            habitantsResource.query(
-                {
-                    $filter: "startswith(Email, '" + vm.email + "')",
-                },
-                function (data) {
-                    vm.habitant = data;
-                    vm.originalhabitant = angular.copy(data);
-                    console.log(data);
-                    if (vm.habitant[0].habitantId && vm.habitant[0].name && vm.email == vm.habitant[0].email) {
-                        vm.title = "Edit: " + vm.habitant[0].name + ' ' + vm.habitant[0].surname;
-                    }
-                    else {
-                        vm.title = "New Habitant";
+        vm.company = '';
 
-                        habitantsResource.get(
-                            { id: 0 },                            
-                            function (data) {
-                                vm.habitant = data;
-                                vm.originalhabitant = angular.copy(data);
-                            }
-                        );
-                    }
-
-                },
-                function (response) {
-                    vm.message = response.statusText + "\r\n";
-                    if (response.data.exceptionMessage)
-                        vm.message += response.data.exceptionMessage;
+        //oncahnge select
+        vm.homeSelect = function () {
+            vm.homes.forEach(function (house) {
+                if (vm.habitant.homeId == house.homeId) {
+                    vm.companyId = house.managementCompanyId;
                 }
-            );
+
+            });
+
+            managementCompaniesResource.query(
+                {
+                    $filter: "ManagementCompanyId eq " + vm.companyId,
+
+                }
+                ,
+                function (data) {
+                    vm.company = data[0].name;
+                });
         }
+
+        //get homes
+        homesResource.query({},
+            function (data) {
+                vm.homes = data;
+            });
+
+        
+        habitantsResource.query(
+            {
+                $filter: "startswith(Email, '" + vm.email + "')",
+            },
+            function (data) {
+                vm.habitantId = data[0].habitantId;
+
+
+                console.log(data[0].habitantId);
+            });
+                //if (vm.habitant.name == data[0].name) {
+                //    vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
+                //    console.log("EDIT");
+                //}
+                //else {
+                //    vm.title = "New Habitant";
+                //    console.log("NEW");
+                //    habitantsResource.get(
+                //        { id: 0 },
+                //        function (data) {
+                //            vm.habitant = data;
+                //            vm.originalhabitant = angular.copy(data);
+                //        }
+                //    );
+                //}
+
+        //    },
+        //    function (response) {
+        //        vm.message = response.statusText + "\r\n";
+        //        if (response.data.exceptionMessage)
+        //            vm.message += response.data.exceptionMessage;
+        //    }
+        //);
+
+        //get habitant
+        habitantsResource.get({ id: vm.habitantId },
+            function (data) {
+                vm.habitant = data;
+                vm.originalHabitant = angular.copy(data);
+            },
+            function (response) {
+                vm.message = response.statusText + "\r\n";
+                if (response.data.exceptionMessage)
+                    vm.message += response.data.exceptionMessage;
+            });
+
+        if (vm.habitant && vm.habitant.habitantId) {
+            vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
+        }
+        else {
+            vm.title = "New Habitant";
+        }
+
 
 
         vm.submit = function () {
             vm.message = '';
-            if (vm.habitant[0].habitantId) {
-                vm.habitant[0].$update({ id: vm.habitant[0].habitantId },
+            if (vm.habitant.habitantId) {
+                vm.habitant.$update({ id: vm.habitant.habitantId },
                     function (data) {
                         vm.message = "... Save Complete";
                     },
@@ -69,7 +120,7 @@
                     });
             }
             else {
-                vm.habitant[0].$save(
+                vm.habitant.$save(
                     function (data) {
                         vm.originalHabitant = angular.copy(data);
 

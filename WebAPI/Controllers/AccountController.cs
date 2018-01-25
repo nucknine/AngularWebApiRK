@@ -344,6 +344,8 @@ namespace WebAPI.Controllers
                 return GetErrorResult(result);
             }
 
+            await UserManager.AddToRoleAsync(user.Id, "user");            
+
             return Ok();
         }
 

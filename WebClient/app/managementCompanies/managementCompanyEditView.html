@@ -57,7 +57,8 @@
             
             <div class="col-md-2">
                 <div class="form-control">
-                    <select ng-model="vm.id" id="SelectAction">
+                    <select ng-model="vm.id" id="SelectAction"
+                            ng-onchange="vm.select()">
                         <option value="0" selected>Create new</option>
                         <option ng-repeat="company in dm.managementCompanies"
                                 value="{{company.managementCompanyId}}">
@@ -67,11 +68,11 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary col-md-2"
+            <!--<button class="btn btn-primary col-md-2"
                     style="width:80px;margin-right:10px"
                     ng-click="vm.select()">
                 Select
-            </button>
+            </button>-->
         </div>
 
 
