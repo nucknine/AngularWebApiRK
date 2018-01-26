@@ -11,7 +11,7 @@
 
     function habitantEditCtrl(habitantsResource, homesResource, managementCompaniesResource, currentUser) {
         var vm = this;
-        vm.habitant;
+        vm.habitant = {};
         vm.message = '';
         vm.title = '';
         vm.email = currentUser.getProfile().username;
@@ -24,6 +24,8 @@
             vm.homes.forEach(function (house) {
                 if (vm.habitant.homeId == house.homeId) {
                     vm.companyId = house.managementCompanyId;
+                    vm.habitant.managementCompanyId = vm.companyId;
+                    vm.habitant.homeId *= 1;
                 }
 
             });
@@ -31,7 +33,6 @@
             managementCompaniesResource.query(
                 {
                     $filter: "ManagementCompanyId eq " + vm.companyId,
-
                 }
                 ,
                 function (data) {
@@ -98,13 +99,10 @@
         //);
 
         //get habitant
-
-
-        
-
-
+                
 
         vm.submit = function () {
+            vm.habitant.homeId *= 1;
             vm.message = '';
             if (vm.habitant.habitantId) {
                 vm.habitant.$update({ id: vm.habitant.habitantId },

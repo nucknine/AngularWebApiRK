@@ -25,11 +25,11 @@
                     }
                 },
 
-                'save': {                    
+                'save': {                        
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 
-                'update': {
+                'update': {                        
                     method: 'PUT',
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 }                

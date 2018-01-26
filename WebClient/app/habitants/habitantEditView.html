@@ -6,13 +6,9 @@
         
               
         vm.habitant: {{vm.habitant}}
-        <br /> <br />
-        vm.originalhabitant: {{vm.originalhabitant}}<br>
-        <br /> <br />
-        vm.habitantid: {{vm.habitantId}}
-        <br /> <br />
-        vm: {{vm}}
-        <br /> <br />
+        <br /><hr> <br />
+        vm.originalHabitant: {{vm.originalHabitant}}<br>
+        <br /><hr>  <br />
         <legend>{{vm.title}}</legend>
 
         <!-- Name -->
@@ -77,6 +73,7 @@
         <!-- Surname -->
 
         <!-- List of Houses -->
+
         <div class="form-group">
             <label class="col-md-2 control-label"
                    for="inputHabitantHouse">Select your House</label>
@@ -84,27 +81,16 @@
                 <select ng-model="vm.habitant.homeId"
                         ng-change="vm.homeSelect()">                    
                     <option ng-repeat="home in vm.homes"
-                            value="{{home.homeId}}"                            >
+                            value="{{home.homeId | number}}"                            >
                         {{home.street}} - {{home.number}}
                     </option>
                 </select>
             </div>
-        </div>
-
-        <!--<div class="form-group">
-            <label class="col-md-2 control-label"
-                   for="inputHabitantHouse">Select your House</label>
-            <div class="col-md-4">
-                <select ng-options="home as home.homeId for home in vm.homes"
-                        ng-model="home" ng-change="update()">
-                    {{home.street}} - {{home.number}}
-                </select>
-            </div>
-        </div>-->
+        </div>       
+        
         <!-- List of Houses -->
 
-
-        <!-- Management Company from selected House ?-->
+        <!-- Management Company from selected House -->
         <div class="form-group">
             <label class="col-md-2 control-label"
                    for="inputHabitantCompany">Your management Company is:</label>
@@ -146,12 +132,7 @@
             </div>
         </div>
         <!-- RegDate -->
-
-        <!-- выбор дома из списка -->
-        <!-- выбор дома из списка -->
-
-        <!--получние всех компаний listCrtrl-->
-       
+               
         <!-- Save -->
         <div class="form-group">
             <div class="col-md-4 col-md-offset-2">

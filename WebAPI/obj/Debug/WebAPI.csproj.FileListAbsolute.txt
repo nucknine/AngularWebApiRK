@@ -276,4 +276,3 @@ C:\Users\Oleg\source\repos\APMRK\WebAPI\bin\ru\System.Web.Http.Owin.resources.dl
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.pdb
-C:\Users\Oleg\source\repos\APMRK\WebAPI\obj\Debug\WebAPI.csprojResolveAssemblyReference.cache
