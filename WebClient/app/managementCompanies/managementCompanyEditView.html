@@ -3,6 +3,7 @@
       novalidate
       ng-controller="managementCompanyEditCtrl as vm">
     <fieldset>
+        vm: {{vm}}
         <legend>{{vm.title}}</legend>
         <div class="form-group"
              ng-class="{'has-error':managementCompanyForm.inputManagementCompanyName.$invalid &&
@@ -58,7 +59,7 @@
             <div class="col-md-2">
                 <div class="form-control">
                     <select ng-model="vm.id" id="SelectAction"
-                            ng-onchange="vm.select()">
+                            ng-change="vm.select()">
                         <option value="0" selected>Create new</option>
                         <option ng-repeat="company in dm.managementCompanies"
                                 value="{{company.managementCompanyId}}">

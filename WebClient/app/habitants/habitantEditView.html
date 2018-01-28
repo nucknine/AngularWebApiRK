@@ -3,12 +3,12 @@
       novalidate
       ng-controller="habitantEditCtrl as vm">
     <fieldset>
-        
-              
+
+
         vm.habitant: {{vm.habitant}}
         <br /><hr> <br />
-        vm.originalHabitant: {{vm.originalHabitant}}<br>
-        <br /><hr>  <br />
+        <!--vm.originalHabitant: {{vm.originalHabitant}}<br>
+        <br /><hr>  <br />-->
         <legend>{{vm.title}}</legend>
 
         <!-- Name -->
@@ -39,7 +39,7 @@
                     Habitant name cannot exceed 12 characters in length.
                 </span>
             </span>
-        </div>     
+        </div>
         <!-- Name -->
         <!-- Surname -->
         <div class="form-group"
@@ -71,25 +71,39 @@
             </span>
         </div>
         <!-- Surname -->
-
         <!-- List of Houses -->
+        
 
         <div class="form-group">
             <label class="col-md-2 control-label"
                    for="inputHabitantHouse">Select your House</label>
             <div class="col-md-4">
-                <select ng-model="vm.habitant.homeId"
-                        ng-change="vm.homeSelect()">                    
+
+                <!--<select name="homeSelect" ng-model="vm.habitant.homeId"
+                        ng-options="home.homeId as home.street home.number for home in vm.homes">
+                    <option value=""></option>
+                </select>-->
+
+                <select 
+                        name="homeSelect" 
+                        id="homeSelect" 
+                        ng-model="vm.habitant.homeId"
+                        ng-change="vm.homeSelect()">
+                    <option ng-repeat="home in vm.homes" 
+                            value="{{home.homeId}}">{{home.street}} - {{home.number}}</option>
+                </select>
+
+                <!--<select ng-model="vm.habitant.homeId"
+                        ng-change="vm.homeSelect()">
                     <option ng-repeat="home in vm.homes"
-                            value="{{home.homeId | number}}"                            >
+                            value="{{vm.habitant.homeId}}">
                         {{home.street}} - {{home.number}}
                     </option>
-                </select>
+                </select>-->
             </div>
-        </div>       
-        
-        <!-- List of Houses -->
+        </div>
 
+        <!-- List of Houses -->
         <!-- Management Company from selected House -->
         <div class="form-group">
             <label class="col-md-2 control-label"
@@ -105,7 +119,6 @@
             </div>
         </div>
         <!-- Management Company from selected House -->
-
         <!-- Apartment -->
         <div class="form-group">
             <label class="col-md-2 control-label"
@@ -116,6 +129,20 @@
                        type="text"
                        placeholder="Apartment N"
                        ng-model="vm.habitant.apartment"
+                       required />
+            </div>
+        </div>
+        <!-- Apartment -->
+        <!-- Apartment -->
+        <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="inputHabitantMail">mail</label>
+            <div class="col-md-4">
+                <input class="form-control"
+                       name="inputHabitantMail"
+                       type="text"
+                       placeholder="Mail"
+                       ng-model="vm.habitant.email"
                        required />
             </div>
         </div>
@@ -132,7 +159,6 @@
             </div>
         </div>
         <!-- RegDate -->
-               
         <!-- Save -->
         <div class="form-group">
             <div class="col-md-4 col-md-offset-2">

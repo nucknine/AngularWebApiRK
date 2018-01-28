@@ -6,9 +6,6 @@
         .controller("habitantEditCtrl",
         habitantEditCtrl);
 
-    //.controller("MainCtrl",
-    //    ["userAccount", "currentUser", MainCtrl]);
-
     function habitantEditCtrl(habitantsResource, homesResource, managementCompaniesResource, currentUser) {
         var vm = this;
         vm.habitant = {};
@@ -16,8 +13,8 @@
         vm.title = '';
         vm.email = currentUser.getProfile().username;
         vm.homes = {};
-
         vm.company = '';
+        console.log("Edit Ctrl " + vm.email);
 
         //oncahnge select
         vm.homeSelect = function () {
@@ -25,20 +22,19 @@
                 if (vm.habitant.homeId == house.homeId) {
                     vm.companyId = house.managementCompanyId;
                     vm.habitant.managementCompanyId = vm.companyId;
-                    vm.habitant.homeId *= 1;
                 }
 
             });
 
             managementCompaniesResource.query(
                 {
-                    $filter: "ManagementCompanyId eq " + vm.companyId,
+                    $filter: "ManagementCompanyId eq " + vm.companyId
                 }
                 ,
                 function (data) {
                     vm.company = data[0].name;
                 });
-        }
+        };
 
         //get homes
         homesResource.query({},
@@ -46,66 +42,50 @@
                 vm.homes = data;
             });
 
-
+        //get habitant by email
         habitantsResource.query(
             {
-                $filter: "startswith(Email, '" + vm.email + "')",
+                $filter: "substringof(Email, '" + vm.email + "')"
             },
             function (data) {
-                vm.habitantId = data[0].habitantId;
+                console.log('data query by email' + data);
+                vm.habitant.habitantId = data[0].habitantId * 1;
 
-                if (vm.habitantId) {                    
-
-                    habitantsResource.get({ id: vm.habitantId },
+                if (data) {
+                    habitantsResource.get({ id: vm.habitant.habitantId },
                         function (data) {
                             vm.habitant = data;
                             vm.originalHabitant = angular.copy(data);
+                            vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant.surname;
                         }
                     );
 
-                    console.log('vm.habitant.habitantId ' + vm.habitant.habitantId);
-                    console.log(vm.habitant);
 
-                    if (vm.habitant && vm.habitant.habitantId) {
-                        vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
-                    }
-                    else {
-                        vm.title = "New Habitant";
-                    }
+
                 }
-            });
-        //if (vm.habitant.name == data[0].name) {
-        //    vm.title = "Edit: " + vm.habitant.name + ' ' + vm.habitant[0].surname;
-        //    console.log("EDIT");
-        //}
-        //else {
-        //    vm.title = "New Habitant";
-        //    console.log("NEW");
-        //    habitantsResource.get(
-        //        { id: 0 },
-        //        function (data) {
-        //            vm.habitant = data;
-        //            vm.originalhabitant = angular.copy(data);
-        //        }
-        //    );
-        //}
+                else {
+                    //vm.habitantId = 0;
+                    vm.title = "New Habitant";
 
-        //    },
-        //    function (response) {
-        //        vm.message = response.statusText + "\r\n";
-        //        if (response.data.exceptionMessage)
-        //            vm.message += response.data.exceptionMessage;
-        //    }
-        //);
-
-        //get habitant
-                
+                    habitantsResource.get({ id: 0 },
+                        function (data) {
+                            vm.habitant = data;
+                            console.log("new");
+                            vm.originalHabitant = angular.copy(data);
+                        }
+                    );
+                }
+            },
+            function (response) {
+                console.log('response query by email' + response);
+            }
+        );        
 
         vm.submit = function () {
             vm.habitant.homeId *= 1;
             vm.message = '';
             if (vm.habitant.habitantId) {
-                vm.habitant.$update({ id: vm.habitant.habitantId },
+                vm.habitant.$update({ id: vm.habitant.habitantId * 1 },
                     function (data) {
                         vm.message = "... Save Complete";
                     },

@@ -41,9 +41,16 @@
                             name: '@name'
                         }
                     }
+                }),
+
+            logout: $resource(appSettings.serverPath + "api/Account/Logout", null,
+                {
+                    'logOutUser': {
+                        method: 'GET'
+                        //headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token },
+                    }
                 })
         };
 
     }
 })();
-

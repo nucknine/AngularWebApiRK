@@ -1,62 +1,62 @@
-﻿[
+[
   {
+    "HomeId": 1,
     "HabitantId": 1,
+    "ManagementCompanyId": 1,
     "Name": "Shima",
     "Surname": "Maxizo",
-    "HomeId": 1,
-    "ManagementCompanyId": 1,
     "Apartment": 1,
-    "CreateDate": "2018-01-01T00:00:00-00:00",
-    "Email": "habitant1@mail.ru"
+    "Email": "habitant1@mail.ru",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
+    "HomeId": 1,
     "HabitantId": 2,
+    "ManagementCompanyId": 1,
     "Name": "Nikola",
     "Surname": "Zyev",
-    "ManagementCompanyId": 1,
-    "HomeId": 1,
     "Apartment": 4,
-    "CreateDate": "2018-01-01T00:00:00-00:00",
-    "Email": "habitant2@mail.ru"
+    "Email": "habitant2@mail.ru",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
+    "HomeId": 5,
     "HabitantId": 3,
+    "ManagementCompanyId": 2,
     "Name": "Viktor",
     "Surname": "Laskin",
-    "ManagementCompanyId": 2,
-    "HomeId": 5,
     "Apartment": 11,
-    "CreateDate": "2018-01-01T00:00:00-00:00",
-    "Email": "habitant3@mail.ru"
+    "Email": "habitant3@mail.ru",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
-    "HabitantId": 4,
-    "Name": "Nikola",
-    "ManagementCompanyId": 2,
-    "Surname": "Zyev",
     "HomeId": 4,
+    "HabitantId": 4,
+    "ManagementCompanyId": 2,
+    "Name": "Nikola",
+    "Surname": "Zyev",
     "Apartment": 42,
-    "CreateDate": "2018-01-01T00:00:00-00:00",
-    "Email": "habitant4@mail.ru"
+    "Email": "habitant4@mail.ru",
+    "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
+    "HomeId": 5,
     "HabitantId": 5,
-    "Name": "Viktor",
     "ManagementCompanyId": 2,
-    "Surname": "Makov",
-    "HomeId": 3,
+    "Name": "Viktors",
+    "Surname": "Makoof",
     "Apartment": 3,
-    "CreateDate": "2018-02-01T00:00:00-00:00",
-    "Email": "habitant@mail.ru"
+    "Email": "habitant@mail.ru",
+    "CreateDate": "2018-02-01T03:00:00+03:00"
   },
   {
-    "HabitantId": 6,
-    "Name": "Viktoria",
-    "ManagementCompanyId": 2,
-    "Surname": "Mak",
     "HomeId": 3,
+    "HabitantId": 6,
+    "ManagementCompanyId": 2,
+    "Name": "Viktoria",
+    "Surname": "Mak",
     "Apartment": 33,
-    "CreateDate": "2018-02-01T00:00:00-00:00",
-    "Email": "habitant20@mail.ru"
+    "Email": "habitant20@mail.ru",
+    "CreateDate": "2018-02-01T03:00:00+03:00"
   }
 ]

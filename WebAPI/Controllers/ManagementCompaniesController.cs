@@ -91,7 +91,7 @@ namespace APM.WebAPI.Controllers
         }
 
         // POST: api/ManagementCompanies
-        [Authorize(Roles = "admin, company")]
+        //[Authorize(Roles = "admin, company")]
         [ResponseType(typeof(ManagementCompany))]
         public IHttpActionResult Post([FromBody]ManagementCompany managementCompany)
         {
@@ -124,7 +124,7 @@ namespace APM.WebAPI.Controllers
 
 
         // PUT: api/ManagementCompanies/5
-        [Authorize(Roles = "admin, company")]
+        //[Authorize(Roles = "admin, company")]
         public IHttpActionResult Put(int id, [FromBody]ManagementCompany managementCompany)
         {
             try

@@ -25,7 +25,8 @@
                     }
                 },
 
-                'save': {                        
+                'save': {    
+                    method: 'POST',
                     headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token }
                 },
 

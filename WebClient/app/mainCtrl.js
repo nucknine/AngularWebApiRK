@@ -50,7 +50,7 @@
             vm.userData.userName = vm.userData.email;
 
             userAccount.login.loginUser(vm.userData,
-                function (data) {
+                function (data) {                    
                     vm.message = "";
                     vm.password = "";
                     currentUser.setProfile(vm.userData.userName, data.access_token);
@@ -76,6 +76,14 @@
                 }
 
             );
+        };
+
+        vm.logOutUser = function () {
+            userAccount.logout.logOutUser({},
+                function (data) {
+                    vm.message = "";
+                    vm.password = "";
+                });
         };
     }
 })();

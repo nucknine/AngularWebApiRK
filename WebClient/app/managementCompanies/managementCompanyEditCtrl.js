@@ -32,9 +32,9 @@
                     vm.message = response.statusText + "\r\n";
                     if (response.data.exceptionMessage)
                         vm.message += response.data.exceptionMessage;
-                });            
+                });
 
-        }
+        };
 
 
 

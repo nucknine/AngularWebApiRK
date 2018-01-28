@@ -39,6 +39,13 @@
                     </button>
                     <div ng-show="vm.message">{{vm.message}}</div>
                 </form>
+                <form ng-if="vm.isLoggedIn()" class="navbar-form navbar-right">
+                    <button type="button"                            
+                            class="btn btn-default"
+                            ng-click="vm.logOutUser()">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </nav>
