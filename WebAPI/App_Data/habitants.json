@@ -58,5 +58,15 @@
     "Apartment": 33,
     "Email": "habitant20@mail.ru",
     "CreateDate": "2018-02-01T03:00:00+03:00"
+  },
+  {
+    "HomeId": 6,
+    "HabitantId": 7,
+    "ManagementCompanyId": 1,
+    "Name": "Alexey",
+    "Surname": "Suvorov",
+    "Apartment": 22,
+    "Email": "habitant21@mail.ru",
+    "CreateDate": "2018-01-29T21:19:32.8580439+03:00"
   }
 ]

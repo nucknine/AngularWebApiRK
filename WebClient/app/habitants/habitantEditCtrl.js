@@ -11,10 +11,12 @@
         vm.habitant = {};
         vm.message = '';
         vm.title = '';
-        vm.email = currentUser.getProfile().username;
+
         vm.homes = {};
         vm.company = '';
-        console.log("Edit Ctrl " + vm.email);
+        vm.email = currentUser.getUsername();
+
+        vm.user = currentUser.getProfile();
 
         //oncahnge select
         vm.homeSelect = function () {
@@ -42,16 +44,17 @@
                 vm.homes = data;
             });
 
-        //get habitant by email
-        habitantsResource.query(
-            {
-                $filter: "substringof(Email, '" + vm.email + "')"
-            },
-            function (data) {
-                console.log('data query by email' + data);
-                vm.habitant.habitantId = data[0].habitantId * 1;
 
-                if (data) {
+
+        //get habitant by email
+        if (vm.email) {
+            habitantsResource.query(
+                {
+                    $filter: "substringof(Email, '" + vm.email + "')"
+                },
+                function (data) {
+                   
+                    vm.habitant.habitantId = data[0].habitantId * 1;
                     habitantsResource.get({ id: vm.habitant.habitantId },
                         function (data) {
                             vm.habitant = data;
@@ -60,27 +63,30 @@
                         }
                     );
 
-
-
+                },
+                function (response) {
+                    console.log('response query by email' + response);
                 }
-                else {
-                    //vm.habitantId = 0;
-                    vm.title = "New Habitant";
+            );
 
-                    habitantsResource.get({ id: 0 },
-                        function (data) {
-                            vm.habitant = data;
-                            console.log("new");
-                            vm.originalHabitant = angular.copy(data);
-                        }
-                    );
-                }
-            },
-            function (response) {
-                console.log('response query by email' + response);
+            if (!vm.habitant[0]) {
+                vm.title = "New Habitant";
+                habitantsResource.get({ id: 0 },
+                    function (data) {
+                        vm.habitant = data;
+                        vm.habitant.email = vm.email;
+                        vm.title = "New Habitant";
+                        vm.originalHabitant = angular.copy(data);
+                    }
+                );
             }
-        );        
+        }
 
+
+
+
+
+        //submit
         vm.submit = function () {
             vm.habitant.homeId *= 1;
             vm.message = '';

@@ -24,9 +24,14 @@
             return profile;
         };
 
+        var getUsername = function () {
+            return profile.username;
+        };
+
         return {
             setProfile: setProfile,
-            getProfile: getProfile
+            getProfile: getProfile,
+            getUsername: getUsername
         };
     }
 })();
