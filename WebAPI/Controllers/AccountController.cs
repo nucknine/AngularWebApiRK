@@ -349,6 +349,37 @@ namespace WebAPI.Controllers
             return Ok();
         }
 
+        // POST api/Account/Register/flag
+        //register for management Companies
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model, bool flag)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            if (flag)
+            {
+                await UserManager.AddToRoleAsync(user.Id, "company");
+            } else
+            {
+                await UserManager.AddToRoleAsync(user.Id, "user");
+            }            
+
+            return Ok();
+        }
+
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

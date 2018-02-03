@@ -14,6 +14,8 @@ namespace WebAPI.Models
         [MinLength(3, ErrorMessage = "Name min length is 3 characters")]
         public string Name { get; set; }
 
+        public string Email { get; set; }
+
         public DateTime CreateDate { get; set; }       
     }
 }

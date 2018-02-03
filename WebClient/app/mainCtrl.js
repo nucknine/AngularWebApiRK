@@ -17,7 +17,8 @@
             userName: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            flag: false
         };
 
 

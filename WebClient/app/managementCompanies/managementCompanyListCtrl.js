@@ -3,56 +3,76 @@
     angular
         .module("companyManagement")
         .controller("managementCompanyListCtrl",
-        ["managementCompaniesResource",
-            managementCompanyListCtrl]);
+        managementCompanyListCtrl);
 
-    function managementCompanyListCtrl(managementCompaniesResource) {
+    function managementCompanyListCtrl(managementCompaniesResource, currentUser) {
         var vm = this;
-        vm.managementCompanyHomes = [];
-        vm.managementCompanies = {};
-        vm.id = [1,2,3];
+        vm.managementCompanyHomes = [];        
+        vm.managementCompany = {};
+        vm.email = currentUser.getUsername();
 
-        managementCompaniesResource.query(
-            //{            
-            //$filter: "contains(ManagementCompanyCode, 'GDN') and Price ge 5 and Price le 20",
-            //$orderby: "Name desc"
-            //}
-            //,
-            function (data) {                
-                vm.managementCompanies = data;
-            });
-        
-        for (var i = 1; i <= vm.id.length; i++) {
-        managementCompaniesResource.findHomes({ id: i, flag: true },
+        managementCompaniesResource.query({
+            $filter: "substringof(Email, '" + vm.email + "')"
+        },
             function (data) {
-                vm.managementCompanyHomes.push(data);
-            },
-            function (response) {
-                vm.message = response + "\r\n";
-                if (response.data.exceptionMessage)
-                    vm.message += response.data.exceptionMessage;
+                vm.managementCompany = data[0];
+                vm.managementCompany.managementCompanyId = data[0].managementCompanyId * 1;
+
+
+                if (vm.managementCompany.managementCompanyId) {
+                managementCompaniesResource.findHomes({ id: vm.managementCompany.managementCompanyId, flag: true },
+                    function (data) {
+                        vm.managementCompanyHomes.push(data);
+                    },
+                    function (response) {
+
+                        vm.message = response + "\r\n";
+                        if (response.data.exceptionMessage)
+                            vm.message += response.data.exceptionMessage;
+                    });
+                }
+
+
             });
-        }
+
+        
+
+       
+
+        
+
+        
+
+
+        //List of all companies
+        //function managementCompanyListCtrl(managementCompaniesResource, currentUser) {
+        //    var vm = this;
+        //    vm.managementCompanyHomes = [];
+        //    vm.managementCompanies = {};
+        //    vm.id = [1, 2, 3];
+        //    vm.email = currentUser.getUsername();
+
+        //    managementCompaniesResource.query({
+        //        $filter: "substringof(Email, '" + vm.email + "')"
+        //    },
+        //        function (data) {
+        //            vm.managementCompanies = data;
+        //        });
+
+        //    for (var i = 1; i <= vm.id.length; i++) {
+        //        managementCompaniesResource.findHomes({ id: i, flag: true },
+        //            function (data) {
+        //                vm.managementCompanyHomes.push(data);
+        //            },
+        //            function (response) {
+        //                vm.message = response + "\r\n";
+        //                if (response.data.exceptionMessage)
+        //                    vm.message += response.data.exceptionMessage;
+        //            });
+        //    }
 
 
 
-
-
-
-
-
-        // Alternative code using variables instead of hard-coded values
-        //vm.searchCriteria = "GDN";
-        //vm.sortProperty = "Price";
-        //vm.sortDirection = "desc";
-
-        //managementCompanyResource.query({
-        //    $filter: "contains(ManagementCompanyCode, '" + vm.searchCriteria + "')" +
-        //        " or contains(ManagementCompanyName, '" + vm.searchCriteria + "')",
-        //    $orderby: vm.sortProperty + " " + vm.sortDirection
-        //}, function (data) {
-        //    vm.managementCompanys = data;
-        //})
 
     }
 }());

@@ -1,20 +1,24 @@
 [
   {
+    "Email": "company@mail.ru",
     "ManagementCompanyId": 1,
     "Name": "LeafYK",
     "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
+    "Email": "zompany@mail.ru",
     "ManagementCompanyId": 2,
     "Name": "KarelianYk",
     "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
+    "Email": "fompany@mail.ru",
     "ManagementCompanyId": 3,
     "Name": "RussianDom",
     "CreateDate": "2018-01-15T10:14:06.6047943+03:00"
   },
   {
+    "Email": "lompany@mail.ru",
     "ManagementCompanyId": 4,
     "Name": "NewCompa",
     "CreateDate": "2018-01-18T12:27:31.9014539+03:00"

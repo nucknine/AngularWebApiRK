@@ -1,20 +1,26 @@
 ﻿[
   {
+    "MessageId": 1,
+    "HabitantId": 5,
+    "ManagementCompanyId": 2,
+    "Request": "Не работает свет",
+    "Response": "Мастер будет 16 числа",
+    "CreateDate": "2018-01-01T00:00:00-00:00"
+  },
+  {
+    "MessageId": 2,
     "HabitantId": 1,
     "ManagementCompanyId": 1,
-    "Message": "Не работает свет",
-    "Response": ""
+    "Request": "Нет воды",
+    "Response": "",
+    "CreateDate": "2018-01-01T00:00:00-00:00"
   },
   {
-    "HabitantId": 2,
+    "MessageId": 3,
+    "HabitantId": 1,
     "ManagementCompanyId": 1,
-    "Message": "Нет воды",
-    "Response": "Мастер будет в 14:00"
-  },
-  {
-    "HabitantId": 3,
-    "ManagementCompanyId": 1,
-    "Message": "Не работает свет",
-    "Response": ""
+    "Request": "Нет электричества",
+    "Response": "",
+    "CreateDate": "2018-01-01T00:00:00-00:00"
   }
 ]

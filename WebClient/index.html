@@ -27,6 +27,14 @@
                                placeholder="password"
                                ng-model="vm.userData.password">
                     </div>
+                    <div class="form-group">
+                        <label for="checkbox">Are you a Company?</label>
+                        <input id="checkbox"
+                               type="checkbox"
+                               value="true"
+                               class="form-control"                           
+                               ng-model="vm.userData.flag">
+                    </div>
                     <button type="submit"
                             class="btn btn-default"
                             ng-click="vm.login()">
@@ -56,12 +64,12 @@
     </div>
 
     <div class="container">
-        <div ng-if="vm.userData.role == 'company' || vm.userData.role == 'admin'"
+        <div ng-if="vm.userData.role == 'company' && vm.isLoggedIn()"
              ng-include="'app/managementCompanies/managementCompanyListView.html'"></div>
     </div>
 
     <div class="container">
-        <div ng-if="vm.userData.role == 'admin'"
+        <div ng-if="vm.userData.role == 'company' && vm.isLoggedIn()"
              ng-include="'app/managementCompanies/managementCompanyEditView.html'"></div>
     </div>
     <!-- " -->

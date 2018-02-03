@@ -10,9 +10,14 @@
 
     function userAccount($resource, appSettings) {
         return {
-            registration: $resource(appSettings.serverPath + "/api/Account/Register", null,
+            registration: $resource(appSettings.serverPath + "/api/Account/Register?", null,
                 {
-                    'registerUser': { method: 'POST' }
+                    'registerUser': {
+                        method: 'POST',
+                        params: {
+                            flag: '@flag'
+                        }
+                    }
                 }),
 
             login: $resource(appSettings.serverPath + "/Token", null,
@@ -46,7 +51,7 @@
             logout: $resource(appSettings.serverPath + "api/Account/Logout", null,
                 {
                     'logOutUser': {
-                        method: 'GET'
+                        method: 'POST'
                         //headers: { 'Authorization': 'Bearer ' + currentUser.getProfile().token },
                     }
                 })

@@ -1,12 +1,27 @@
 <div class="panel panel-primary"
      ng-controller="managementCompanyListCtrl as vm">
+    
     <div class="panel-heading"
          style="font-size:large">
-        Management Company List
+        Management Company List        
+    </div>    
+    <div class="panel-group">        
+        <div class="panel panel-default">
+            <div class="panel-heading">Company name: {{ vm.managementCompany.name }}</div>            
+            <div ng-repeat="homes in vm.managementCompanyHomes">
+                <div class="panel-body" ng-repeat="home in homes">                    
+                        <div class="col-md-6">Street: {{ home.street }}</div>                        
+                        <div class="col-md-6">House number: {{ home.number }}</div>                    
+                </div>
+            </div>            
+        </div>
     </div>
 
-    <div class="panel-group">        
-        <div class="panel panel-default"
+</div>
+
+<!-- List of all companies
+    
+    <div class="panel panel-default"
              ng-repeat="managementCompany in vm.managementCompanies">
             <div class="panel-heading">Company name: {{ managementCompany.name }}</div>            
             <div ng-repeat="homes in vm.managementCompanyHomes">
@@ -16,9 +31,5 @@
                         <div class="col-md-6">House number: {{ home.number }}</div>                    
                 </div>
             </div>            
-        </div>
-    </div>
-
-
-</div>
-
+        </div> 
+-->
