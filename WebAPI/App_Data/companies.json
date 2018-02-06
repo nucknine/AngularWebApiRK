@@ -1,26 +1,32 @@
 [
   {
-    "Email": "company@mail.ru",
     "ManagementCompanyId": 1,
     "Name": "LeafYK",
+    "Email": "company@mail.ru",
     "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
-    "Email": "zompany@mail.ru",
     "ManagementCompanyId": 2,
     "Name": "KarelianYk",
+    "Email": "zompany@mail.ru",
     "CreateDate": "2018-01-01T03:00:00+03:00"
   },
   {
-    "Email": "fompany@mail.ru",
     "ManagementCompanyId": 3,
     "Name": "RussianDom",
+    "Email": "fompany@mail.ru",
     "CreateDate": "2018-01-15T10:14:06.6047943+03:00"
   },
   {
-    "Email": "lompany@mail.ru",
     "ManagementCompanyId": 4,
     "Name": "NewCompa",
+    "Email": "lompany@mail.ru",
     "CreateDate": "2018-01-18T12:27:31.9014539+03:00"
+  },
+  {
+    "ManagementCompanyId": 5,
+    "Name": "Kastarika",
+    "Email": "company21@mail.ru",
+    "CreateDate": "2018-02-06T14:42:52.6031608+03:00"
   }
 ]

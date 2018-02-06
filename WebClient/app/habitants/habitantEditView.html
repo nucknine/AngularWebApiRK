@@ -5,7 +5,7 @@
     <fieldset>
 
 
-        vm.habitant:{{vm.habitant}}           
+        vm.habitant:{{vm.habitant}}
         <br /><hr> <br />
         <!--vm.originalHabitant: {{vm.originalHabitant}}<br>
         <br /><hr>  <br />-->
@@ -72,7 +72,7 @@
         </div>
         <!-- Surname -->
         <!-- List of Houses -->
-        
+
 
         <div class="form-group">
             <label class="col-md-2 control-label"
@@ -84,13 +84,14 @@
                     <option value=""></option>
                 </select>-->
 
-                <select 
-                        name="homeSelect" 
-                        id="homeSelect" 
+                <select name="homeSelect"
+                        id="homeSelect"
                         ng-model="vm.habitant.homeId"
                         ng-change="vm.homeSelect()">
-                    <option ng-repeat="home in vm.homes" 
-                            value="{{home.homeId}}">{{home.street}} - {{home.number}}</option>
+                    <option ng-repeat="home in vm.homes"
+                            value="{{home.homeId}}">
+                        {{home.street}} - {{home.number}}
+                    </option>
                 </select>
 
                 <!--<select ng-model="vm.habitant.homeId"
@@ -133,25 +134,21 @@
             </div>
         </div>
         <!-- Apartment -->
-        <!-- Apartment -->
+        <!-- EMail -->
         <div class="form-group">
             <label class="col-md-2 control-label"
-                   for="inputHabitantMail">mail</label>
+                   for="inputHabitantMail">Email</label>
             <div class="col-md-4">
-                <input class="form-control"
-                       name="inputHabitantMail"
-                       type="text"
-                       placeholder="Mail"
-                       ng-model="vm.habitant.email"
-                       required />
+                <div class="form-control"
+                     {{vm.habitant.email}}>
+                </div>
             </div>
         </div>
-        <!-- Apartment -->
+        <!-- EMail -->
         <!-- RegDate -->
         <div class="form-group">
             <label class="col-md-2 control-label"
                    for="inputCreateDate">Register date</label>
-
             <div class="col-md-4">
                 <div class="form-control">
                     {{vm.habitant.createDate | date}}
